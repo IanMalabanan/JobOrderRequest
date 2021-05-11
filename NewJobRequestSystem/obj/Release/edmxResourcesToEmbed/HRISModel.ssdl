@@ -1,0 +1,1168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="t_City">
+    <Key>
+      <PropertyRef Name="CountryID" />
+      <PropertyRef Name="ProvID" />
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="ProvID" Type="int" Nullable="false" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_CivilStatus">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_COEBodyTemplate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TemplateName" Type="nvarchar" MaxLength="150" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="750" />
+    <Property Name="CompanyAddress" Type="nvarchar" MaxLength="750" />
+    <Property Name="COEBodyTemplate" Type="nvarchar" MaxLength="980" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HRIS.dbo.t_COETemplateForPrinting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_COETemplateForPrinting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COEBody" Type="nvarchar" MaxLength="980" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HRIS.dbo.t_COEType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_COEType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COEType" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="t_Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Department">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="DeptCode" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="DeptName" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_DepartmentalSection">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+      <PropertyRef Name="SectCode" />
+    </Key>
+    <Property Name="DeptCode" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="SectCode" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="SectName" Type="varchar" MaxLength="35" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_DependentRelation">
+    <Key>
+      <PropertyRef Name="Relationship" />
+    </Key>
+    <Property Name="Relationship" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EducationalAttainment">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EmpAddress">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="PresStreet" Type="varchar" MaxLength="200" />
+    <Property Name="PresCityID" Type="int" />
+    <Property Name="PresProvinceID" Type="int" />
+    <Property Name="PresCountryID" Type="int" />
+    <Property Name="PermStreet" Type="varchar" MaxLength="200" />
+    <Property Name="PermCityID" Type="int" />
+    <Property Name="PermProvinceID" Type="int" />
+    <Property Name="PermCountryID" Type="int" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_EmpDependents">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="DependentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="Relationship" Type="varchar" MaxLength="25" />
+    <Property Name="Occupation" Type="varchar" MaxLength="50" />
+    <Property Name="MaidenName" Type="varchar" MaxLength="50" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EmpEducationalBackground">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="ElementarySchool" Type="varchar" MaxLength="100" />
+    <Property Name="ElementaryAddress" Type="varchar" MaxLength="100" />
+    <Property Name="ElementaryYear" Type="char" MaxLength="4" />
+    <Property Name="SecondarySchool" Type="varchar" MaxLength="100" />
+    <Property Name="SecondaryAddress" Type="varchar" MaxLength="100" />
+    <Property Name="SecondaryYear" Type="char" MaxLength="4" />
+    <Property Name="TertiarySchool" Type="varchar" MaxLength="100" />
+    <Property Name="TertiaryAddress" Type="varchar" MaxLength="100" />
+    <Property Name="TertiaryYear" Type="char" MaxLength="4" />
+    <Property Name="TertiaryCourse" Type="varchar" MaxLength="100" />
+    <Property Name="VocationalSchool" Type="varchar" MaxLength="100" />
+    <Property Name="VocationalAddress" Type="varchar" MaxLength="100" />
+    <Property Name="VocationalYear" Type="char" MaxLength="4" />
+    <Property Name="VocationalCourse" Type="varchar" MaxLength="100" />
+    <Property Name="PostGraduateSchool" Type="varchar" MaxLength="100" />
+    <Property Name="PostGraduateAddress" Type="varchar" MaxLength="100" />
+    <Property Name="PostGraduateYear" Type="char" MaxLength="4" />
+    <Property Name="PostGraduateCourse" Type="varchar" MaxLength="100" />
+    <Property Name="IsLicensed" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HRIS.dbo.t_EmployeeFingerData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_EmployeeFingerData">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="EmpID" Type="varchar" MaxLength="12" />
+    <Property Name="FingerData" Type="varchar(max)" />
+    <Property Name="FingerType" Type="varchar" MaxLength="50" />
+    <Property Name="Arm" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="t_EmpMaster">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="BatchNo" Type="int" Nullable="false" />
+    <Property Name="SerialID" Type="int" Nullable="false" />
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="ProximityCardID" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="35" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" />
+    <Property Name="Sex" Type="char" MaxLength="1" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="HireDate" Type="datetime" Nullable="false" />
+    <Property Name="EmploymentStatus" Type="char" MaxLength="1" />
+    <Property Name="Nationality" Type="char" MaxLength="1" />
+    <Property Name="Religion" Type="char" MaxLength="1" />
+    <Property Name="CivilStatus" Type="char" MaxLength="1" />
+    <Property Name="Position" Type="char" MaxLength="3" />
+    <Property Name="Department" Type="char" MaxLength="1" />
+    <Property Name="Section" Type="char" MaxLength="2" />
+    <Property Name="SSSno" Type="varchar" MaxLength="15" />
+    <Property Name="PHno" Type="varchar" MaxLength="15" />
+    <Property Name="PagIbigNo" Type="varchar" MaxLength="15" />
+    <Property Name="TIN" Type="varchar" MaxLength="15" />
+    <Property Name="EmpPicture" Type="varbinary(max)" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="35" />
+    <Property Name="ContactPhone" Type="varchar" MaxLength="15" />
+    <Property Name="ContactAddress" Type="varchar" MaxLength="150" />
+    <Property Name="Height" Type="varchar" MaxLength="6" />
+    <Property Name="HeightUnit" Type="varchar" MaxLength="6" />
+    <Property Name="Weight" Type="varchar" MaxLength="6" />
+    <Property Name="WeightUnit" Type="varchar" MaxLength="6" />
+    <Property Name="EndOfWork" Type="datetime" />
+    <Property Name="HighestEducationalAttainment" Type="char" MaxLength="2" />
+    <Property Name="IDissued" Type="bit" />
+    <Property Name="AppointmentPaperIssued" Type="bit" />
+    <Property Name="NoOfDependents" Type="int" />
+    <Property Name="ShuttleDestination" Type="int" />
+    <Property Name="LoaforManagerApproval" Type="bit" />
+    <Property Name="InitialEntryBy" Type="varchar" MaxLength="25" />
+    <Property Name="InitialEntryDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="25" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="firstevaluation" Type="bit" />
+    <Property Name="secondevaluation" Type="bit" />
+    <Property Name="thirdevaluation" Type="bit" />
+    <Property Name="LOAforHRmanagerApproval" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_EmpPrintID">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="BatchNo" Type="int" />
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
+    <Property Name="Department" Type="varchar" MaxLength="50" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="SSSno" Type="varchar" MaxLength="15" />
+    <Property Name="TIN" Type="varchar" MaxLength="15" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+    <Property Name="ContactAddress" Type="varchar" MaxLength="100" />
+    <Property Name="ContactPhone" Type="varchar" MaxLength="15" />
+    <Property Name="Barcode" Type="varchar" MaxLength="30" />
+    <Property Name="EmpPicture" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="t_EmpReClassification">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="ReClassificationMode" />
+      <PropertyRef Name="ToPosition" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="ReClassificationMode" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="FromPosition" Type="char" MaxLength="3" />
+    <Property Name="ToPosition" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="EffectiveDatePosition" Type="date" />
+    <Property Name="FromGradeLevel" Type="varchar" MaxLength="20" />
+    <Property Name="ToGradeLevel" Type="varchar" MaxLength="20" />
+    <Property Name="EffectiveDateGradeLevel" Type="date" />
+    <Property Name="FromEmploymentStatus" Type="char" MaxLength="1" />
+    <Property Name="ToEmploymentStatus" Type="char" MaxLength="1" />
+    <Property Name="EffectiveDateEmploymentStatus" Type="date" />
+    <Property Name="FromDepartment" Type="char" MaxLength="1" />
+    <Property Name="ToDepartment" Type="char" MaxLength="1" />
+    <Property Name="EffectiveDateDepartment" Type="date" />
+    <Property Name="FromSection" Type="char" MaxLength="2" />
+    <Property Name="ToSection" Type="char" MaxLength="2" />
+    <Property Name="EffectiveDateSection" Type="date" />
+    <Property Name="FromBasicRate" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ToBasicRate" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateBasicRate" Type="date" />
+    <Property Name="FromPayMode" Type="char" MaxLength="1" />
+    <Property Name="ToPayMode" Type="char" MaxLength="1" />
+    <Property Name="EffectiveDatePayMode" Type="date" />
+    <Property Name="FromMealAllowance" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ToMealAllowance" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateMealAllowance" Type="date" />
+    <Property Name="FromRelativityPay" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ToRelativityPay" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateRelativityPay" Type="date" />
+    <Property Name="FromOtherAllowance" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ToOtherAllowance" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateOtherAllowance" Type="date" />
+    <Property Name="FromAccidentInsurance" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ToAccidentInsurance" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateAccidentInsurance" Type="date" />
+    <Property Name="FromResponsibilityPay" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="ToResponsibilityPay" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="EffectiveDateResponsibilityPay" Type="date" />
+    <Property Name="FromTrainersAllowance" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="ToTrainersAllowance" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="EffectiveDateTrainersAllowance" Type="date" />
+    <Property Name="FromOtherAllowanceDesc" Type="varchar" MaxLength="50" />
+    <Property Name="ToOtherAllowanceDesc" Type="varchar" MaxLength="50" />
+    <Property Name="FromCTPA" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="ToCTPA" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="EffectiveDateCTPA" Type="date" />
+    <Property Name="ApprovedBy" Type="varchar" MaxLength="50" />
+    <Property Name="NotedBy" Type="varchar" MaxLength="50" />
+    <Property Name="PreparedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ReceivedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EmpStatus">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EmpTrainingsSeminars">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="LastUpdate" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="ConductedBy" Type="varchar" MaxLength="50" />
+    <Property Name="TrainingVenue" Type="varchar" MaxLength="100" />
+    <Property Name="TrainingName" Type="varchar" MaxLength="50" />
+    <Property Name="TrainingFrom" Type="datetime" />
+    <Property Name="TrainingTo" Type="datetime" />
+    <Property Name="Trainor" Type="varchar" MaxLength="35" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EmpWorkExperience">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="CompanyName" />
+      <PropertyRef Name="LastUpdate" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyAddress" Type="varchar" MaxLength="150" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="DateFrom" Type="datetime" />
+    <Property Name="DateTo" Type="datetime" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_HeightUnit">
+    <Key>
+      <PropertyRef Name="HeightUnit" />
+    </Key>
+    <Property Name="HeightUnit" Type="varchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Nationality">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_PayMode">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Position">
+    <Key>
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DeptCode" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Province">
+    <Key>
+      <PropertyRef Name="ProvID" />
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="ProvID" Type="int" Nullable="false" />
+    <Property Name="ProvName" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HRIS.dbo.t_ReClassificationMode' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_ReClassificationMode">
+          <Property Name="ReClassificationMode" Type="char" MaxLength="2" />
+        </EntityType>-->
+  <EntityType Name="t_Religion">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Sex">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="char" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_ShuttleDestination">
+    <Key>
+      <PropertyRef Name="DestinationID" />
+    </Key>
+    <Property Name="DestinationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Destination" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HRIS.dbo.t_Temp' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Temp">
+          <Property Name="EmpID" Type="varchar" MaxLength="12" />
+          <Property Name="DeptCode" Type="char" MaxLength="1" />
+          <Property Name="SectCode" Type="char" MaxLength="2" />
+          <Property Name="PositionCode" Type="char" MaxLength="3" />
+        </EntityType>-->
+  <EntityType Name="t_TempEmpDependents">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="Relationship" Type="varchar" MaxLength="25" />
+    <Property Name="Occupation" Type="varchar" MaxLength="50" />
+    <Property Name="MaidenName" Type="varchar" MaxLength="50" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_TempEmpWorkExp">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="CompanyName" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyAddress" Type="varchar" MaxLength="50" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="DateFrom" Type="datetime" />
+    <Property Name="DateTo" Type="datetime" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_Users">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userpass" Type="varchar" MaxLength="50" />
+    <Property Name="usertype" Type="varchar" MaxLength="20" />
+    <Property Name="isdeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_UserType">
+    <Key>
+      <PropertyRef Name="usertype" />
+    </Key>
+    <Property Name="usertype" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_WeightUnit">
+    <Key>
+      <PropertyRef Name="WeightUnit" />
+    </Key>
+    <Property Name="WeightUnit" Type="varchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSystemFiles">
+    <Key>
+      <PropertyRef Name="FileName" />
+    </Key>
+    <Property Name="FileName" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="SourceUpdateFolder" Type="varchar" MaxLength="400" />
+    <Property Name="SystemName" Type="varchar" MaxLength="800" />
+  </EntityType>
+  <EntityType Name="tblSystemVersion">
+    <Key>
+      <PropertyRef Name="SystemVersion" />
+    </Key>
+    <Property Name="SystemVersion" Type="int" Nullable="false" />
+    <Property Name="SystemName" Type="varchar" MaxLength="800" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HRIS.dbo.test' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="test">
+          <Property Name="code" Type="char" MaxLength="10" />
+          <Property Name="dept" Type="varchar" MaxLength="50" />
+          <Property Name="deprs" Type="char" MaxLength="10" />
+        </EntityType>-->
+  <Association Name="FK_t_City_t_Province">
+    <End Role="t_Province" Type="Self.t_Province" Multiplicity="1" />
+    <End Role="t_City" Type="Self.t_City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Province">
+        <PropertyRef Name="ProvID" />
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="t_City">
+        <PropertyRef Name="ProvID" />
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpAddress_t_City">
+    <End Role="t_City" Type="Self.t_City" Multiplicity="0..1" />
+    <End Role="t_EmpAddress" Type="Self.t_EmpAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_City">
+        <PropertyRef Name="CountryID" />
+        <PropertyRef Name="ProvID" />
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="t_EmpAddress">
+        <PropertyRef Name="PresCountryID" />
+        <PropertyRef Name="PresProvinceID" />
+        <PropertyRef Name="PresCityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpAddress_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpAddress" Type="Self.t_EmpAddress" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpAddress">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpDependents_t_DependentRelation">
+    <End Role="t_DependentRelation" Type="Self.t_DependentRelation" Multiplicity="0..1" />
+    <End Role="t_EmpDependents" Type="Self.t_EmpDependents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DependentRelation">
+        <PropertyRef Name="Relationship" />
+      </Principal>
+      <Dependent Role="t_EmpDependents">
+        <PropertyRef Name="Relationship" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpDependents_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpDependents" Type="Self.t_EmpDependents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpDependents">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpEducationalBackground_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpEducationalBackground" Type="Self.t_EmpEducationalBackground" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpEducationalBackground">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_CivilStatus">
+    <End Role="t_CivilStatus" Type="Self.t_CivilStatus" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_CivilStatus">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="CivilStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_DepartmentalSection">
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+        <PropertyRef Name="SectCode" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Department" />
+        <PropertyRef Name="Section" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_EducationalAttainment">
+    <End Role="t_EducationalAttainment" Type="Self.t_EducationalAttainment" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EducationalAttainment">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="HighestEducationalAttainment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_HeightUnit">
+    <End Role="t_HeightUnit" Type="Self.t_HeightUnit" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_HeightUnit">
+        <PropertyRef Name="HeightUnit" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="HeightUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_Religion">
+    <End Role="t_Religion" Type="Self.t_Religion" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Religion">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Religion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_Sex">
+    <End Role="t_Sex" Type="Self.t_Sex" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Sex">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Sex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_WeightUnit">
+    <End Role="t_WeightUnit" Type="Self.t_WeightUnit" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_WeightUnit">
+        <PropertyRef Name="WeightUnit" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="WeightUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpPrintID_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1" />
+    <End Role="t_EmpPrintID" Type="Self.t_EmpPrintID" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpPrintID">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_DepartmentalSection">
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+        <PropertyRef Name="SectCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="FromDepartment" />
+        <PropertyRef Name="FromSection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_DepartmentalSection1">
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+        <PropertyRef Name="SectCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="ToDepartment" />
+        <PropertyRef Name="ToSection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_EmpMaster1">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_PayMode">
+    <End Role="t_PayMode" Type="Self.t_PayMode" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_PayMode">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="FromPayMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_PayMode1">
+    <End Role="t_PayMode" Type="Self.t_PayMode" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_PayMode">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="ToPayMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_Position">
+    <End Role="t_Position" Type="Self.t_Position" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Position">
+        <PropertyRef Name="Code" />
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="FromPosition" />
+        <PropertyRef Name="FromDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_Position1">
+    <End Role="t_Position" Type="Self.t_Position" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Position">
+        <PropertyRef Name="Code" />
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="ToPosition" />
+        <PropertyRef Name="ToDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpTrainingsSeminars_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpTrainingsSeminars" Type="Self.t_EmpTrainingsSeminars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpTrainingsSeminars">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpWorkExperience_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpWorkExperience" Type="Self.t_EmpWorkExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpWorkExperience">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Province_t_Country">
+    <End Role="t_Country" Type="Self.t_Country" Multiplicity="1" />
+    <End Role="t_Province" Type="Self.t_Province" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="t_Province">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDepartmentalSection_tblDepartment1">
+    <End Role="t_Department" Type="Self.t_Department" Multiplicity="1" />
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Department">
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEmployeeMaster_tblEmploymentStatus">
+    <End Role="t_EmpStatus" Type="Self.t_EmpStatus" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpStatus">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="EmploymentStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEmployeeMaster_tblNationality">
+    <End Role="t_Nationality" Type="Self.t_Nationality" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Nationality">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Nationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEmployeeMaster_tblPosition">
+    <End Role="t_Position" Type="Self.t_Position" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Position">
+        <PropertyRef Name="Code" />
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Position" />
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DCS_GetAdministratorByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DCS_GetAdministratorByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DCS_GetAffectedDepartments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DCS_GetAllAdministrators" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DCS_GetAllApprovers_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DCS_GetAllApprovers_UsersByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DisplayCOE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EPLS_GetAllEmployeesByDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="deptcode" Type="char" Mode="In" />
+    <Parameter Name="leaderempid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetLeaderBySubordinate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetSubordinates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="leaderempid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetSubordinatesByEmpID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetSubordinatesForPersonalObjective" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="leaderempid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetSV_HeadBySubordinate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EPLS_GetSV_Manager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EPLS_GetSV_ManagerForRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetSelectedEmpforPrintID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PIS_UpdateMasterData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BatchNo" Type="smallint" Mode="In" />
+    <Parameter Name="SerialID" Type="smallint" Mode="In" />
+    <Parameter Name="EmpID" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+    <Parameter Name="AddressStreet" Type="varchar" Mode="In" />
+    <Parameter Name="AddressCity" Type="varchar" Mode="In" />
+    <Parameter Name="AddressProvince" Type="varchar" Mode="In" />
+    <Parameter Name="AddressCountry" Type="varchar" Mode="In" />
+    <Parameter Name="AddrCity" Type="smallint" Mode="In" />
+    <Parameter Name="AddrProvince" Type="tinyint" Mode="In" />
+    <Parameter Name="AddrCountry" Type="tinyint" Mode="In" />
+    <Parameter Name="Phone" Type="varchar" Mode="In" />
+    <Parameter Name="Sex" Type="char" Mode="In" />
+    <Parameter Name="BirthDate" Type="smalldatetime" Mode="In" />
+    <Parameter Name="HireDate" Type="smalldatetime" Mode="In" />
+    <Parameter Name="EmploymentStatus" Type="char" Mode="In" />
+    <Parameter Name="Nationality" Type="char" Mode="In" />
+    <Parameter Name="Religion" Type="char" Mode="In" />
+    <Parameter Name="CivilStatus" Type="char" Mode="In" />
+    <Parameter Name="NoOfDependents_orig" Type="tinyint" Mode="In" />
+    <Parameter Name="HighestEducationalAttainment_orig" Type="char" Mode="In" />
+    <Parameter Name="PositionHeld" Type="char" Mode="In" />
+    <Parameter Name="Department" Type="char" Mode="In" />
+    <Parameter Name="Section" Type="char" Mode="In" />
+    <Parameter Name="SubSection" Type="char" Mode="In" />
+    <Parameter Name="SSSno" Type="varchar" Mode="In" />
+    <Parameter Name="PHno" Type="varchar" Mode="In" />
+    <Parameter Name="PagIbigNo" Type="varchar" Mode="In" />
+    <Parameter Name="TIN" Type="varchar" Mode="In" />
+    <Parameter Name="EmpPicture" Type="varchar" Mode="In" />
+    <Parameter Name="ContactPerson" Type="varchar" Mode="In" />
+    <Parameter Name="ContactPhone" Type="varchar" Mode="In" />
+    <Parameter Name="ContactAddress" Type="varchar" Mode="In" />
+    <Parameter Name="PayMode" Type="char" Mode="In" />
+    <Parameter Name="Height" Type="varchar" Mode="In" />
+    <Parameter Name="HeightUnit" Type="varchar" Mode="In" />
+    <Parameter Name="Weight" Type="varchar" Mode="In" />
+    <Parameter Name="WeightUnit" Type="varchar" Mode="In" />
+    <Parameter Name="PermanentAddress" Type="varchar" Mode="In" />
+    <Parameter Name="SpouseName" Type="varchar" Mode="In" />
+    <Parameter Name="SpouseOccupation" Type="varchar" Mode="In" />
+    <Parameter Name="FathersName" Type="varchar" Mode="In" />
+    <Parameter Name="FathersOccupation" Type="varchar" Mode="In" />
+    <Parameter Name="MothersMaidenName" Type="varchar" Mode="In" />
+    <Parameter Name="MothersOccupation" Type="varchar" Mode="In" />
+    <Parameter Name="EndOfWork" Type="smalldatetime" Mode="In" />
+    <Parameter Name="OriginalSection" Type="char" Mode="In" />
+    <Parameter Name="TaxExemptCode_orig" Type="varchar" Mode="In" />
+    <Parameter Name="Activity" Type="char" Mode="In" />
+    <Parameter Name="Course" Type="varchar" Mode="In" />
+    <Parameter Name="IsLicensed" Type="bit" Mode="In" />
+    <Parameter Name="School" Type="varchar" Mode="In" />
+    <Parameter Name="Position" Type="varchar" Mode="In" />
+    <Parameter Name="Photo" Type="image" Mode="In" />
+    <Parameter Name="HighestEducationalAttainment" Type="char" Mode="In" />
+    <Parameter Name="IDissued" Type="bit" Mode="In" />
+    <Parameter Name="InitialEntryBy" Type="varchar" Mode="In" />
+    <Parameter Name="InitialEntryDate" Type="smalldatetime" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+    <Parameter Name="LastUpdate" Type="datetime" Mode="In" />
+    <Parameter Name="CostCenter" Type="char" Mode="In" />
+    <Parameter Name="ApptPaperIssued" Type="bit" Mode="In" />
+    <Parameter Name="TaxExemptCode" Type="varchar" Mode="In" />
+    <Parameter Name="NoOfDependents" Type="tinyint" Mode="In" />
+    <Parameter Name="EmpJapaneseNameLocation" Type="varchar" Mode="In" />
+    <Parameter Name="AgencyID" Type="tinyint" Mode="In" />
+    <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SKPI_GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SKPI_GetAllEmployeesByDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="deptcode" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SKPI_GetAllEmployeesByDepartmentandSection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="deptcode" Type="char" Mode="In" />
+    <Parameter Name="sectcode" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SKPI_GetAllEmployeesByEmpID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SKPI_GetAllEmployeesByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SKPI_GetDCApprovers_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SKPI_GetEmpLoginByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="varchar(max)" Mode="In" />
+    <Parameter Name="UserPass" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SKPI_GetSection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="deptcode" Type="char" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="HRISModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_City" EntityType="Self.t_City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_CivilStatus" EntityType="Self.t_CivilStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_COEBodyTemplate" EntityType="Self.t_COEBodyTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Country" EntityType="Self.t_Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Department" EntityType="Self.t_Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_DepartmentalSection" EntityType="Self.t_DepartmentalSection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_DependentRelation" EntityType="Self.t_DependentRelation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EducationalAttainment" EntityType="Self.t_EducationalAttainment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpAddress" EntityType="Self.t_EmpAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpDependents" EntityType="Self.t_EmpDependents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpEducationalBackground" EntityType="Self.t_EmpEducationalBackground" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpMaster" EntityType="Self.t_EmpMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpPrintID" EntityType="Self.t_EmpPrintID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpReClassification" EntityType="Self.t_EmpReClassification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpStatus" EntityType="Self.t_EmpStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpTrainingsSeminars" EntityType="Self.t_EmpTrainingsSeminars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EmpWorkExperience" EntityType="Self.t_EmpWorkExperience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_HeightUnit" EntityType="Self.t_HeightUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Nationality" EntityType="Self.t_Nationality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_PayMode" EntityType="Self.t_PayMode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Position" EntityType="Self.t_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Province" EntityType="Self.t_Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Religion" EntityType="Self.t_Religion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Sex" EntityType="Self.t_Sex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_ShuttleDestination" EntityType="Self.t_ShuttleDestination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_TempEmpDependents" EntityType="Self.t_TempEmpDependents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_TempEmpWorkExp" EntityType="Self.t_TempEmpWorkExp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Users" EntityType="Self.t_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_UserType" EntityType="Self.t_UserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_WeightUnit" EntityType="Self.t_WeightUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSystemFiles" EntityType="Self.tblSystemFiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSystemVersion" EntityType="Self.tblSystemVersion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_COETemplateForPrinting" EntityType="Self.t_COETemplateForPrinting" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_COETemplateForPrinting].[ID] AS [ID], 
+    [t_COETemplateForPrinting].[COEBody] AS [COEBody]
+    FROM [dbo].[t_COETemplateForPrinting] AS [t_COETemplateForPrinting]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_COEType" EntityType="Self.t_COEType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_COEType].[ID] AS [ID], 
+    [t_COEType].[COEType] AS [COEType]
+    FROM [dbo].[t_COEType] AS [t_COEType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_EmployeeFingerData" EntityType="Self.t_EmployeeFingerData" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_EmployeeFingerData].[userid] AS [userid], 
+    [t_EmployeeFingerData].[EmpID] AS [EmpID], 
+    [t_EmployeeFingerData].[FingerData] AS [FingerData], 
+    [t_EmployeeFingerData].[FingerType] AS [FingerType], 
+    [t_EmployeeFingerData].[Arm] AS [Arm]
+    FROM [dbo].[t_EmployeeFingerData] AS [t_EmployeeFingerData]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_t_City_t_Province" Association="Self.FK_t_City_t_Province">
+      <End Role="t_Province" EntitySet="t_Province" />
+      <End Role="t_City" EntitySet="t_City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpAddress_t_City" Association="Self.FK_t_EmpAddress_t_City">
+      <End Role="t_City" EntitySet="t_City" />
+      <End Role="t_EmpAddress" EntitySet="t_EmpAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpAddress_t_EmpMaster" Association="Self.FK_t_EmpAddress_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpAddress" EntitySet="t_EmpAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpDependents_t_DependentRelation" Association="Self.FK_t_EmpDependents_t_DependentRelation">
+      <End Role="t_DependentRelation" EntitySet="t_DependentRelation" />
+      <End Role="t_EmpDependents" EntitySet="t_EmpDependents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpDependents_t_EmpMaster" Association="Self.FK_t_EmpDependents_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpDependents" EntitySet="t_EmpDependents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpEducationalBackground_t_EmpMaster" Association="Self.FK_t_EmpEducationalBackground_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpEducationalBackground" EntitySet="t_EmpEducationalBackground" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_CivilStatus" Association="Self.FK_t_EmpMaster_t_CivilStatus">
+      <End Role="t_CivilStatus" EntitySet="t_CivilStatus" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_DepartmentalSection" Association="Self.FK_t_EmpMaster_t_DepartmentalSection">
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_EducationalAttainment" Association="Self.FK_t_EmpMaster_t_EducationalAttainment">
+      <End Role="t_EducationalAttainment" EntitySet="t_EducationalAttainment" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_HeightUnit" Association="Self.FK_t_EmpMaster_t_HeightUnit">
+      <End Role="t_HeightUnit" EntitySet="t_HeightUnit" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_Religion" Association="Self.FK_t_EmpMaster_t_Religion">
+      <End Role="t_Religion" EntitySet="t_Religion" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_Sex" Association="Self.FK_t_EmpMaster_t_Sex">
+      <End Role="t_Sex" EntitySet="t_Sex" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_WeightUnit" Association="Self.FK_t_EmpMaster_t_WeightUnit">
+      <End Role="t_WeightUnit" EntitySet="t_WeightUnit" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpPrintID_t_EmpMaster" Association="Self.FK_t_EmpPrintID_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpPrintID" EntitySet="t_EmpPrintID" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_DepartmentalSection" Association="Self.FK_t_EmpReClassification_t_DepartmentalSection">
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_DepartmentalSection1" Association="Self.FK_t_EmpReClassification_t_DepartmentalSection1">
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_EmpMaster1" Association="Self.FK_t_EmpReClassification_t_EmpMaster1">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_PayMode" Association="Self.FK_t_EmpReClassification_t_PayMode">
+      <End Role="t_PayMode" EntitySet="t_PayMode" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_PayMode1" Association="Self.FK_t_EmpReClassification_t_PayMode1">
+      <End Role="t_PayMode" EntitySet="t_PayMode" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_Position" Association="Self.FK_t_EmpReClassification_t_Position">
+      <End Role="t_Position" EntitySet="t_Position" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_Position1" Association="Self.FK_t_EmpReClassification_t_Position1">
+      <End Role="t_Position" EntitySet="t_Position" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpTrainingsSeminars_t_EmpMaster" Association="Self.FK_t_EmpTrainingsSeminars_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpTrainingsSeminars" EntitySet="t_EmpTrainingsSeminars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpWorkExperience_t_EmpMaster" Association="Self.FK_t_EmpWorkExperience_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpWorkExperience" EntitySet="t_EmpWorkExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Province_t_Country" Association="Self.FK_t_Province_t_Country">
+      <End Role="t_Country" EntitySet="t_Country" />
+      <End Role="t_Province" EntitySet="t_Province" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDepartmentalSection_tblDepartment1" Association="Self.FK_tblDepartmentalSection_tblDepartment1">
+      <End Role="t_Department" EntitySet="t_Department" />
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEmployeeMaster_tblEmploymentStatus" Association="Self.FK_tblEmployeeMaster_tblEmploymentStatus">
+      <End Role="t_EmpStatus" EntitySet="t_EmpStatus" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEmployeeMaster_tblNationality" Association="Self.FK_tblEmployeeMaster_tblNationality">
+      <End Role="t_Nationality" EntitySet="t_Nationality" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEmployeeMaster_tblPosition" Association="Self.FK_tblEmployeeMaster_tblPosition">
+      <End Role="t_Position" EntitySet="t_Position" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

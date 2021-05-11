@@ -1,0 +1,1353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="t_City">
+    <Key>
+      <PropertyRef Name="CountryID" />
+      <PropertyRef Name="ProvID" />
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="ProvID" Type="Int32" Nullable="false" />
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="CityName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_Province" Relationship="Self.FK_t_City_t_Province" FromRole="t_City" ToRole="t_Province" />
+    <NavigationProperty Name="t_EmpAddress" Relationship="Self.FK_t_EmpAddress_t_City" FromRole="t_City" ToRole="t_EmpAddress" />
+  </EntityType>
+  <EntityType Name="t_CivilStatus">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_CivilStatus" FromRole="t_CivilStatus" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_COEBodyTemplate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TemplateName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
+    <Property Name="COEBodyTemplate" Type="String" MaxLength="980" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_Province" Relationship="Self.FK_t_Province_t_Country" FromRole="t_Country" ToRole="t_Province" />
+  </EntityType>
+  <EntityType Name="t_Department">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="DeptCode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DeptName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_DepartmentalSection" Relationship="Self.FK_tblDepartmentalSection_tblDepartment1" FromRole="t_Department" ToRole="t_DepartmentalSection" />
+  </EntityType>
+  <EntityType Name="t_DepartmentalSection">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+      <PropertyRef Name="SectCode" />
+    </Key>
+    <Property Name="DeptCode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SectCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SectName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_Department" Relationship="Self.FK_tblDepartmentalSection_tblDepartment1" FromRole="t_DepartmentalSection" ToRole="t_Department" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_DepartmentalSection" FromRole="t_DepartmentalSection" ToRole="t_EmpMaster" />
+    <NavigationProperty Name="t_EmpReClassification" Relationship="Self.FK_t_EmpReClassification_t_DepartmentalSection" FromRole="t_DepartmentalSection" ToRole="t_EmpReClassification" />
+    <NavigationProperty Name="t_EmpReClassification1" Relationship="Self.FK_t_EmpReClassification_t_DepartmentalSection1" FromRole="t_DepartmentalSection" ToRole="t_EmpReClassification" />
+  </EntityType>
+  <EntityType Name="t_DependentRelation">
+    <Key>
+      <PropertyRef Name="Relationship" />
+    </Key>
+    <Property Name="Relationship" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpDependents" Relationship="Self.FK_t_EmpDependents_t_DependentRelation" FromRole="t_DependentRelation" ToRole="t_EmpDependents" />
+  </EntityType>
+  <EntityType Name="t_EducationalAttainment">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_EducationalAttainment" FromRole="t_EducationalAttainment" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpAddress">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PresStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PresCityID" Type="Int32" />
+    <Property Name="PresProvinceID" Type="Int32" />
+    <Property Name="PresCountryID" Type="Int32" />
+    <Property Name="PermStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PermCityID" Type="Int32" />
+    <Property Name="PermProvinceID" Type="Int32" />
+    <Property Name="PermCountryID" Type="Int32" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="t_City" Relationship="Self.FK_t_EmpAddress_t_City" FromRole="t_EmpAddress" ToRole="t_City" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpAddress_t_EmpMaster" FromRole="t_EmpAddress" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpDependents">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="DependentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Relationship" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaidenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t_DependentRelation" Relationship="Self.FK_t_EmpDependents_t_DependentRelation" FromRole="t_EmpDependents" ToRole="t_DependentRelation" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpDependents_t_EmpMaster" FromRole="t_EmpDependents" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpEducationalBackground">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ElementarySchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ElementaryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ElementaryYear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="SecondarySchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SecondaryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SecondaryYear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="TertiarySchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TertiaryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TertiaryYear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="TertiaryCourse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VocationalSchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VocationalAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VocationalYear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="VocationalCourse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PostGraduateSchool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PostGraduateAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PostGraduateYear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="PostGraduateCourse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsLicensed" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpEducationalBackground_t_EmpMaster" FromRole="t_EmpEducationalBackground" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpMaster">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="BatchNo" Type="Int32" Nullable="false" />
+    <Property Name="SerialID" Type="Int32" Nullable="false" />
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProximityCardID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmploymentStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Nationality" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Religion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CivilStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Section" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="SSSno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PHno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PagIbigNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TIN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EmpPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="ContactPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ContactAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Height" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="HeightUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="WeightUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="EndOfWork" Type="DateTime" Precision="3" />
+    <Property Name="HighestEducationalAttainment" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="IDissued" Type="Boolean" />
+    <Property Name="AppointmentPaperIssued" Type="Boolean" />
+    <Property Name="NoOfDependents" Type="Int32" />
+    <Property Name="ShuttleDestination" Type="Int32" />
+    <Property Name="LoaforManagerApproval" Type="Boolean" />
+    <Property Name="InitialEntryBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="InitialEntryDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="firstevaluation" Type="Boolean" />
+    <Property Name="secondevaluation" Type="Boolean" />
+    <Property Name="thirdevaluation" Type="Boolean" />
+    <Property Name="LOAforHRmanagerApproval" Type="Boolean" />
+    <NavigationProperty Name="t_CivilStatus" Relationship="Self.FK_t_EmpMaster_t_CivilStatus" FromRole="t_EmpMaster" ToRole="t_CivilStatus" />
+    <NavigationProperty Name="t_DepartmentalSection" Relationship="Self.FK_t_EmpMaster_t_DepartmentalSection" FromRole="t_EmpMaster" ToRole="t_DepartmentalSection" />
+    <NavigationProperty Name="t_EducationalAttainment" Relationship="Self.FK_t_EmpMaster_t_EducationalAttainment" FromRole="t_EmpMaster" ToRole="t_EducationalAttainment" />
+    <NavigationProperty Name="t_EmpAddress" Relationship="Self.FK_t_EmpAddress_t_EmpMaster" FromRole="t_EmpMaster" ToRole="t_EmpAddress" />
+    <NavigationProperty Name="t_EmpDependents" Relationship="Self.FK_t_EmpDependents_t_EmpMaster" FromRole="t_EmpMaster" ToRole="t_EmpDependents" />
+    <NavigationProperty Name="t_EmpEducationalBackground" Relationship="Self.FK_t_EmpEducationalBackground_t_EmpMaster" FromRole="t_EmpMaster" ToRole="t_EmpEducationalBackground" />
+    <NavigationProperty Name="t_HeightUnit" Relationship="Self.FK_t_EmpMaster_t_HeightUnit" FromRole="t_EmpMaster" ToRole="t_HeightUnit" />
+    <NavigationProperty Name="t_Religion" Relationship="Self.FK_t_EmpMaster_t_Religion" FromRole="t_EmpMaster" ToRole="t_Religion" />
+    <NavigationProperty Name="t_Sex" Relationship="Self.FK_t_EmpMaster_t_Sex" FromRole="t_EmpMaster" ToRole="t_Sex" />
+    <NavigationProperty Name="t_WeightUnit" Relationship="Self.FK_t_EmpMaster_t_WeightUnit" FromRole="t_EmpMaster" ToRole="t_WeightUnit" />
+    <NavigationProperty Name="t_EmpPrintID" Relationship="Self.FK_t_EmpPrintID_t_EmpMaster" FromRole="t_EmpMaster" ToRole="t_EmpPrintID" />
+    <NavigationProperty Name="t_EmpReClassification" Relationship="Self.FK_t_EmpReClassification_t_EmpMaster1" FromRole="t_EmpMaster" ToRole="t_EmpReClassification" />
+    <NavigationProperty Name="t_EmpTrainingsSeminars" Relationship="Self.FK_t_EmpTrainingsSeminars_t_EmpMaster" FromRole="t_EmpMaster" ToRole="t_EmpTrainingsSeminars" />
+    <NavigationProperty Name="t_EmpWorkExperience" Relationship="Self.FK_t_EmpWorkExperience_t_EmpMaster" FromRole="t_EmpMaster" ToRole="t_EmpWorkExperience" />
+    <NavigationProperty Name="t_EmpStatus" Relationship="Self.FK_tblEmployeeMaster_tblEmploymentStatus" FromRole="t_EmpMaster" ToRole="t_EmpStatus" />
+    <NavigationProperty Name="t_Nationality" Relationship="Self.FK_tblEmployeeMaster_tblNationality" FromRole="t_EmpMaster" ToRole="t_Nationality" />
+    <NavigationProperty Name="t_Position" Relationship="Self.FK_tblEmployeeMaster_tblPosition" FromRole="t_EmpMaster" ToRole="t_Position" />
+  </EntityType>
+  <EntityType Name="t_EmpPrintID">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="BatchNo" Type="Int32" />
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SSSno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TIN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Barcode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EmpPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpPrintID_t_EmpMaster" FromRole="t_EmpPrintID" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpReClassification">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="ReClassificationMode" />
+      <PropertyRef Name="ToPosition" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReClassificationMode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="FromPosition" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="ToPosition" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EffectiveDatePosition" Type="DateTime" Precision="0" />
+    <Property Name="FromGradeLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ToGradeLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EffectiveDateGradeLevel" Type="DateTime" Precision="0" />
+    <Property Name="FromEmploymentStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ToEmploymentStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EffectiveDateEmploymentStatus" Type="DateTime" Precision="0" />
+    <Property Name="FromDepartment" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ToDepartment" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EffectiveDateDepartment" Type="DateTime" Precision="0" />
+    <Property Name="FromSection" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ToSection" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="EffectiveDateSection" Type="DateTime" Precision="0" />
+    <Property Name="FromBasicRate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ToBasicRate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateBasicRate" Type="DateTime" Precision="0" />
+    <Property Name="FromPayMode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ToPayMode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EffectiveDatePayMode" Type="DateTime" Precision="0" />
+    <Property Name="FromMealAllowance" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ToMealAllowance" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateMealAllowance" Type="DateTime" Precision="0" />
+    <Property Name="FromRelativityPay" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ToRelativityPay" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateRelativityPay" Type="DateTime" Precision="0" />
+    <Property Name="FromOtherAllowance" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ToOtherAllowance" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateOtherAllowance" Type="DateTime" Precision="0" />
+    <Property Name="FromAccidentInsurance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ToAccidentInsurance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="EffectiveDateAccidentInsurance" Type="DateTime" Precision="0" />
+    <Property Name="FromResponsibilityPay" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ToResponsibilityPay" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="EffectiveDateResponsibilityPay" Type="DateTime" Precision="0" />
+    <Property Name="FromTrainersAllowance" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ToTrainersAllowance" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="EffectiveDateTrainersAllowance" Type="DateTime" Precision="0" />
+    <Property Name="FromOtherAllowanceDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ToOtherAllowanceDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FromCTPA" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ToCTPA" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="EffectiveDateCTPA" Type="DateTime" Precision="0" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NotedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PreparedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReceivedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t_DepartmentalSection" Relationship="Self.FK_t_EmpReClassification_t_DepartmentalSection" FromRole="t_EmpReClassification" ToRole="t_DepartmentalSection" />
+    <NavigationProperty Name="t_DepartmentalSection1" Relationship="Self.FK_t_EmpReClassification_t_DepartmentalSection1" FromRole="t_EmpReClassification" ToRole="t_DepartmentalSection" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpReClassification_t_EmpMaster1" FromRole="t_EmpReClassification" ToRole="t_EmpMaster" />
+    <NavigationProperty Name="t_PayMode" Relationship="Self.FK_t_EmpReClassification_t_PayMode" FromRole="t_EmpReClassification" ToRole="t_PayMode" />
+    <NavigationProperty Name="t_PayMode1" Relationship="Self.FK_t_EmpReClassification_t_PayMode1" FromRole="t_EmpReClassification" ToRole="t_PayMode" />
+    <NavigationProperty Name="t_Position" Relationship="Self.FK_t_EmpReClassification_t_Position" FromRole="t_EmpReClassification" ToRole="t_Position" />
+    <NavigationProperty Name="t_Position1" Relationship="Self.FK_t_EmpReClassification_t_Position1" FromRole="t_EmpReClassification" ToRole="t_Position" />
+  </EntityType>
+  <EntityType Name="t_EmpStatus">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_tblEmployeeMaster_tblEmploymentStatus" FromRole="t_EmpStatus" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpTrainingsSeminars">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="LastUpdate" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ConductedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrainingVenue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TrainingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrainingFrom" Type="DateTime" Precision="3" />
+    <Property Name="TrainingTo" Type="DateTime" Precision="3" />
+    <Property Name="Trainor" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpTrainingsSeminars_t_EmpMaster" FromRole="t_EmpTrainingsSeminars" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_EmpWorkExperience">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="CompanyName" />
+      <PropertyRef Name="LastUpdate" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpWorkExperience_t_EmpMaster" FromRole="t_EmpWorkExperience" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_HeightUnit">
+    <Key>
+      <PropertyRef Name="HeightUnit" />
+    </Key>
+    <Property Name="HeightUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_HeightUnit" FromRole="t_HeightUnit" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_Nationality">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_tblEmployeeMaster_tblNationality" FromRole="t_Nationality" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_PayMode">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpReClassification" Relationship="Self.FK_t_EmpReClassification_t_PayMode" FromRole="t_PayMode" ToRole="t_EmpReClassification" />
+    <NavigationProperty Name="t_EmpReClassification1" Relationship="Self.FK_t_EmpReClassification_t_PayMode1" FromRole="t_PayMode" ToRole="t_EmpReClassification" />
+  </EntityType>
+  <EntityType Name="t_Position">
+    <Key>
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DeptCode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_tblEmployeeMaster_tblPosition" FromRole="t_Position" ToRole="t_EmpMaster" />
+    <NavigationProperty Name="t_EmpReClassification" Relationship="Self.FK_t_EmpReClassification_t_Position" FromRole="t_Position" ToRole="t_EmpReClassification" />
+    <NavigationProperty Name="t_EmpReClassification1" Relationship="Self.FK_t_EmpReClassification_t_Position1" FromRole="t_Position" ToRole="t_EmpReClassification" />
+  </EntityType>
+  <EntityType Name="t_Province">
+    <Key>
+      <PropertyRef Name="ProvID" />
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="ProvID" Type="Int32" Nullable="false" />
+    <Property Name="ProvName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="t_City" Relationship="Self.FK_t_City_t_Province" FromRole="t_Province" ToRole="t_City" />
+    <NavigationProperty Name="t_Country" Relationship="Self.FK_t_Province_t_Country" FromRole="t_Province" ToRole="t_Country" />
+  </EntityType>
+  <EntityType Name="t_Religion">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_Religion" FromRole="t_Religion" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_Sex">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_Sex" FromRole="t_Sex" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="t_ShuttleDestination">
+    <Key>
+      <PropertyRef Name="DestinationID" />
+    </Key>
+    <Property Name="DestinationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_TempEmpDependents">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="Relationship" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaidenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="t_TempEmpWorkExp">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="CompanyName" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="t_Users">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userpass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usertype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="isdeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="t_UserType">
+    <Key>
+      <PropertyRef Name="usertype" />
+    </Key>
+    <Property Name="usertype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_WeightUnit">
+    <Key>
+      <PropertyRef Name="WeightUnit" />
+    </Key>
+    <Property Name="WeightUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="t_EmpMaster" Relationship="Self.FK_t_EmpMaster_t_WeightUnit" FromRole="t_WeightUnit" ToRole="t_EmpMaster" />
+  </EntityType>
+  <EntityType Name="tblSystemFile">
+    <Key>
+      <PropertyRef Name="FileName" />
+    </Key>
+    <Property Name="FileName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SourceUpdateFolder" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="SystemName" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblSystemVersion">
+    <Key>
+      <PropertyRef Name="SystemVersion" />
+    </Key>
+    <Property Name="SystemVersion" Type="Int32" Nullable="false" />
+    <Property Name="SystemName" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="t_COETemplateForPrinting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="COEBody" Type="String" MaxLength="980" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_COEType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="COEType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="t_EmployeeFingerData">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="FingerData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FingerType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Arm" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_t_City_t_Province">
+    <End Role="t_Province" Type="Self.t_Province" Multiplicity="1" />
+    <End Role="t_City" Type="Self.t_City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Province">
+        <PropertyRef Name="ProvID" />
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="t_City">
+        <PropertyRef Name="ProvID" />
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpAddress_t_City">
+    <End Role="t_City" Type="Self.t_City" Multiplicity="0..1" />
+    <End Role="t_EmpAddress" Type="Self.t_EmpAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_City">
+        <PropertyRef Name="CountryID" />
+        <PropertyRef Name="ProvID" />
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="t_EmpAddress">
+        <PropertyRef Name="PresCountryID" />
+        <PropertyRef Name="PresProvinceID" />
+        <PropertyRef Name="PresCityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_CivilStatus">
+    <End Role="t_CivilStatus" Type="Self.t_CivilStatus" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_CivilStatus">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="CivilStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Province_t_Country">
+    <End Role="t_Country" Type="Self.t_Country" Multiplicity="1" />
+    <End Role="t_Province" Type="Self.t_Province" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="t_Province">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDepartmentalSection_tblDepartment1">
+    <End Role="t_Department" Type="Self.t_Department" Multiplicity="1" />
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Department">
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_DepartmentalSection">
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+        <PropertyRef Name="SectCode" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Department" />
+        <PropertyRef Name="Section" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_DepartmentalSection">
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+        <PropertyRef Name="SectCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="FromDepartment" />
+        <PropertyRef Name="FromSection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_DepartmentalSection1">
+    <End Role="t_DepartmentalSection" Type="Self.t_DepartmentalSection" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DepartmentalSection">
+        <PropertyRef Name="DeptCode" />
+        <PropertyRef Name="SectCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="ToDepartment" />
+        <PropertyRef Name="ToSection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpDependents_t_DependentRelation">
+    <End Role="t_DependentRelation" Type="Self.t_DependentRelation" Multiplicity="0..1" />
+    <End Role="t_EmpDependents" Type="Self.t_EmpDependents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DependentRelation">
+        <PropertyRef Name="Relationship" />
+      </Principal>
+      <Dependent Role="t_EmpDependents">
+        <PropertyRef Name="Relationship" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_EducationalAttainment">
+    <End Role="t_EducationalAttainment" Type="Self.t_EducationalAttainment" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EducationalAttainment">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="HighestEducationalAttainment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpAddress_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpAddress" Type="Self.t_EmpAddress" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpAddress">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpDependents_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpDependents" Type="Self.t_EmpDependents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpDependents">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpEducationalBackground_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpEducationalBackground" Type="Self.t_EmpEducationalBackground" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpEducationalBackground">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_HeightUnit">
+    <End Role="t_HeightUnit" Type="Self.t_HeightUnit" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_HeightUnit">
+        <PropertyRef Name="HeightUnit" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="HeightUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_Religion">
+    <End Role="t_Religion" Type="Self.t_Religion" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Religion">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Religion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_Sex">
+    <End Role="t_Sex" Type="Self.t_Sex" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Sex">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Sex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpMaster_t_WeightUnit">
+    <End Role="t_WeightUnit" Type="Self.t_WeightUnit" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_WeightUnit">
+        <PropertyRef Name="WeightUnit" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="WeightUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpPrintID_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1" />
+    <End Role="t_EmpPrintID" Type="Self.t_EmpPrintID" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpPrintID">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_EmpMaster1">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpTrainingsSeminars_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpTrainingsSeminars" Type="Self.t_EmpTrainingsSeminars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpTrainingsSeminars">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpWorkExperience_t_EmpMaster">
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_EmpWorkExperience" Type="Self.t_EmpWorkExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpMaster">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="t_EmpWorkExperience">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEmployeeMaster_tblEmploymentStatus">
+    <End Role="t_EmpStatus" Type="Self.t_EmpStatus" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EmpStatus">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="EmploymentStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEmployeeMaster_tblNationality">
+    <End Role="t_Nationality" Type="Self.t_Nationality" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Nationality">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Nationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEmployeeMaster_tblPosition">
+    <End Role="t_Position" Type="Self.t_Position" Multiplicity="0..1" />
+    <End Role="t_EmpMaster" Type="Self.t_EmpMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Position">
+        <PropertyRef Name="Code" />
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_EmpMaster">
+        <PropertyRef Name="Position" />
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_PayMode">
+    <End Role="t_PayMode" Type="Self.t_PayMode" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_PayMode">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="FromPayMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_PayMode1">
+    <End Role="t_PayMode" Type="Self.t_PayMode" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_PayMode">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="ToPayMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_Position">
+    <End Role="t_Position" Type="Self.t_Position" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Position">
+        <PropertyRef Name="Code" />
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="FromPosition" />
+        <PropertyRef Name="FromDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_EmpReClassification_t_Position1">
+    <End Role="t_Position" Type="Self.t_Position" Multiplicity="0..1" />
+    <End Role="t_EmpReClassification" Type="Self.t_EmpReClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Position">
+        <PropertyRef Name="Code" />
+        <PropertyRef Name="DeptCode" />
+      </Principal>
+      <Dependent Role="t_EmpReClassification">
+        <PropertyRef Name="ToPosition" />
+        <PropertyRef Name="ToDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HRISEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="t_City" EntityType="Self.t_City" />
+    <EntitySet Name="t_CivilStatus" EntityType="Self.t_CivilStatus" />
+    <EntitySet Name="t_COEBodyTemplate" EntityType="Self.t_COEBodyTemplate" />
+    <EntitySet Name="t_Country" EntityType="Self.t_Country" />
+    <EntitySet Name="t_Department" EntityType="Self.t_Department" />
+    <EntitySet Name="t_DepartmentalSection" EntityType="Self.t_DepartmentalSection" />
+    <EntitySet Name="t_DependentRelation" EntityType="Self.t_DependentRelation" />
+    <EntitySet Name="t_EducationalAttainment" EntityType="Self.t_EducationalAttainment" />
+    <EntitySet Name="t_EmpAddress" EntityType="Self.t_EmpAddress" />
+    <EntitySet Name="t_EmpDependents" EntityType="Self.t_EmpDependents" />
+    <EntitySet Name="t_EmpEducationalBackground" EntityType="Self.t_EmpEducationalBackground" />
+    <EntitySet Name="t_EmpMaster" EntityType="Self.t_EmpMaster" />
+    <EntitySet Name="t_EmpPrintID" EntityType="Self.t_EmpPrintID" />
+    <EntitySet Name="t_EmpReClassification" EntityType="Self.t_EmpReClassification" />
+    <EntitySet Name="t_EmpStatus" EntityType="Self.t_EmpStatus" />
+    <EntitySet Name="t_EmpTrainingsSeminars" EntityType="Self.t_EmpTrainingsSeminars" />
+    <EntitySet Name="t_EmpWorkExperience" EntityType="Self.t_EmpWorkExperience" />
+    <EntitySet Name="t_HeightUnit" EntityType="Self.t_HeightUnit" />
+    <EntitySet Name="t_Nationality" EntityType="Self.t_Nationality" />
+    <EntitySet Name="t_PayMode" EntityType="Self.t_PayMode" />
+    <EntitySet Name="t_Position" EntityType="Self.t_Position" />
+    <EntitySet Name="t_Province" EntityType="Self.t_Province" />
+    <EntitySet Name="t_Religion" EntityType="Self.t_Religion" />
+    <EntitySet Name="t_Sex" EntityType="Self.t_Sex" />
+    <EntitySet Name="t_ShuttleDestination" EntityType="Self.t_ShuttleDestination" />
+    <EntitySet Name="t_TempEmpDependents" EntityType="Self.t_TempEmpDependents" />
+    <EntitySet Name="t_TempEmpWorkExp" EntityType="Self.t_TempEmpWorkExp" />
+    <EntitySet Name="t_Users" EntityType="Self.t_Users" />
+    <EntitySet Name="t_UserType" EntityType="Self.t_UserType" />
+    <EntitySet Name="t_WeightUnit" EntityType="Self.t_WeightUnit" />
+    <EntitySet Name="tblSystemFiles" EntityType="Self.tblSystemFile" />
+    <EntitySet Name="tblSystemVersions" EntityType="Self.tblSystemVersion" />
+    <EntitySet Name="t_COETemplateForPrinting" EntityType="Self.t_COETemplateForPrinting" />
+    <EntitySet Name="t_COEType" EntityType="Self.t_COEType" />
+    <EntitySet Name="t_EmployeeFingerData" EntityType="Self.t_EmployeeFingerData" />
+    <AssociationSet Name="FK_t_City_t_Province" Association="Self.FK_t_City_t_Province">
+      <End Role="t_Province" EntitySet="t_Province" />
+      <End Role="t_City" EntitySet="t_City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpAddress_t_City" Association="Self.FK_t_EmpAddress_t_City">
+      <End Role="t_City" EntitySet="t_City" />
+      <End Role="t_EmpAddress" EntitySet="t_EmpAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_CivilStatus" Association="Self.FK_t_EmpMaster_t_CivilStatus">
+      <End Role="t_CivilStatus" EntitySet="t_CivilStatus" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Province_t_Country" Association="Self.FK_t_Province_t_Country">
+      <End Role="t_Country" EntitySet="t_Country" />
+      <End Role="t_Province" EntitySet="t_Province" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDepartmentalSection_tblDepartment1" Association="Self.FK_tblDepartmentalSection_tblDepartment1">
+      <End Role="t_Department" EntitySet="t_Department" />
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_DepartmentalSection" Association="Self.FK_t_EmpMaster_t_DepartmentalSection">
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_DepartmentalSection" Association="Self.FK_t_EmpReClassification_t_DepartmentalSection">
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_DepartmentalSection1" Association="Self.FK_t_EmpReClassification_t_DepartmentalSection1">
+      <End Role="t_DepartmentalSection" EntitySet="t_DepartmentalSection" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpDependents_t_DependentRelation" Association="Self.FK_t_EmpDependents_t_DependentRelation">
+      <End Role="t_DependentRelation" EntitySet="t_DependentRelation" />
+      <End Role="t_EmpDependents" EntitySet="t_EmpDependents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_EducationalAttainment" Association="Self.FK_t_EmpMaster_t_EducationalAttainment">
+      <End Role="t_EducationalAttainment" EntitySet="t_EducationalAttainment" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpAddress_t_EmpMaster" Association="Self.FK_t_EmpAddress_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpAddress" EntitySet="t_EmpAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpDependents_t_EmpMaster" Association="Self.FK_t_EmpDependents_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpDependents" EntitySet="t_EmpDependents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpEducationalBackground_t_EmpMaster" Association="Self.FK_t_EmpEducationalBackground_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpEducationalBackground" EntitySet="t_EmpEducationalBackground" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_HeightUnit" Association="Self.FK_t_EmpMaster_t_HeightUnit">
+      <End Role="t_HeightUnit" EntitySet="t_HeightUnit" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_Religion" Association="Self.FK_t_EmpMaster_t_Religion">
+      <End Role="t_Religion" EntitySet="t_Religion" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_Sex" Association="Self.FK_t_EmpMaster_t_Sex">
+      <End Role="t_Sex" EntitySet="t_Sex" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpMaster_t_WeightUnit" Association="Self.FK_t_EmpMaster_t_WeightUnit">
+      <End Role="t_WeightUnit" EntitySet="t_WeightUnit" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpPrintID_t_EmpMaster" Association="Self.FK_t_EmpPrintID_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpPrintID" EntitySet="t_EmpPrintID" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_EmpMaster1" Association="Self.FK_t_EmpReClassification_t_EmpMaster1">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpTrainingsSeminars_t_EmpMaster" Association="Self.FK_t_EmpTrainingsSeminars_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpTrainingsSeminars" EntitySet="t_EmpTrainingsSeminars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpWorkExperience_t_EmpMaster" Association="Self.FK_t_EmpWorkExperience_t_EmpMaster">
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+      <End Role="t_EmpWorkExperience" EntitySet="t_EmpWorkExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEmployeeMaster_tblEmploymentStatus" Association="Self.FK_tblEmployeeMaster_tblEmploymentStatus">
+      <End Role="t_EmpStatus" EntitySet="t_EmpStatus" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEmployeeMaster_tblNationality" Association="Self.FK_tblEmployeeMaster_tblNationality">
+      <End Role="t_Nationality" EntitySet="t_Nationality" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEmployeeMaster_tblPosition" Association="Self.FK_tblEmployeeMaster_tblPosition">
+      <End Role="t_Position" EntitySet="t_Position" />
+      <End Role="t_EmpMaster" EntitySet="t_EmpMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_PayMode" Association="Self.FK_t_EmpReClassification_t_PayMode">
+      <End Role="t_PayMode" EntitySet="t_PayMode" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_PayMode1" Association="Self.FK_t_EmpReClassification_t_PayMode1">
+      <End Role="t_PayMode" EntitySet="t_PayMode" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_Position" Association="Self.FK_t_EmpReClassification_t_Position">
+      <End Role="t_Position" EntitySet="t_Position" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_EmpReClassification_t_Position1" Association="Self.FK_t_EmpReClassification_t_Position1">
+      <End Role="t_Position" EntitySet="t_Position" />
+      <End Role="t_EmpReClassification" EntitySet="t_EmpReClassification" />
+    </AssociationSet>
+    <FunctionImport Name="DCS_GetAdministratorByID" ReturnType="Collection(HRISModel.DCS_GetAdministratorByID_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DCS_GetAdministratorByName" ReturnType="Collection(HRISModel.DCS_GetAdministratorByName_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DCS_GetAffectedDepartments">
+      <Parameter Name="uc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DCS_GetAllAdministrators" ReturnType="Collection(HRISModel.DCS_GetAllAdministrators_Result)" />
+    <FunctionImport Name="DCS_GetAllApprovers_Users" ReturnType="Collection(HRISModel.DCS_GetAllApprovers_Users_Result)" />
+    <FunctionImport Name="DCS_GetAllApprovers_UsersByName" ReturnType="Collection(HRISModel.DCS_GetAllApprovers_UsersByName_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DisplayCOE" ReturnType="Collection(String)" />
+    <FunctionImport Name="EPLS_GetAllEmployeesByDepartment">
+      <Parameter Name="deptcode" Mode="In" Type="String" />
+      <Parameter Name="leaderempid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetLeaderBySubordinate">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetManager">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetSubordinates">
+      <Parameter Name="leaderempid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetSubordinatesByEmpID">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetSubordinatesForPersonalObjective">
+      <Parameter Name="leaderempid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetSV_HeadBySubordinate">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EPLS_GetSV_Manager" />
+    <FunctionImport Name="EPLS_GetSV_ManagerForRegistration" />
+    <FunctionImport Name="GetAllDepartment" />
+    <FunctionImport Name="GetAllManager" />
+    <FunctionImport Name="GetSelectedEmpforPrintID" ReturnType="Collection(HRISModel.GetSelectedEmpforPrintID_Result)" />
+    <FunctionImport Name="PIS_UpdateMasterData">
+      <Parameter Name="BatchNo" Mode="In" Type="Int16" />
+      <Parameter Name="SerialID" Mode="In" Type="Int16" />
+      <Parameter Name="EmpID" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="AddressStreet" Mode="In" Type="String" />
+      <Parameter Name="AddressCity" Mode="In" Type="String" />
+      <Parameter Name="AddressProvince" Mode="In" Type="String" />
+      <Parameter Name="AddressCountry" Mode="In" Type="String" />
+      <Parameter Name="AddrCity" Mode="In" Type="Int16" />
+      <Parameter Name="AddrProvince" Mode="In" Type="Byte" />
+      <Parameter Name="AddrCountry" Mode="In" Type="Byte" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Sex" Mode="In" Type="String" />
+      <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+      <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EmploymentStatus" Mode="In" Type="String" />
+      <Parameter Name="Nationality" Mode="In" Type="String" />
+      <Parameter Name="Religion" Mode="In" Type="String" />
+      <Parameter Name="CivilStatus" Mode="In" Type="String" />
+      <Parameter Name="NoOfDependents_orig" Mode="In" Type="Byte" />
+      <Parameter Name="HighestEducationalAttainment_orig" Mode="In" Type="String" />
+      <Parameter Name="PositionHeld" Mode="In" Type="String" />
+      <Parameter Name="Department" Mode="In" Type="String" />
+      <Parameter Name="Section" Mode="In" Type="String" />
+      <Parameter Name="SubSection" Mode="In" Type="String" />
+      <Parameter Name="SSSno" Mode="In" Type="String" />
+      <Parameter Name="PHno" Mode="In" Type="String" />
+      <Parameter Name="PagIbigNo" Mode="In" Type="String" />
+      <Parameter Name="TIN" Mode="In" Type="String" />
+      <Parameter Name="EmpPicture" Mode="In" Type="String" />
+      <Parameter Name="ContactPerson" Mode="In" Type="String" />
+      <Parameter Name="ContactPhone" Mode="In" Type="String" />
+      <Parameter Name="ContactAddress" Mode="In" Type="String" />
+      <Parameter Name="PayMode" Mode="In" Type="String" />
+      <Parameter Name="Height" Mode="In" Type="String" />
+      <Parameter Name="HeightUnit" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="String" />
+      <Parameter Name="WeightUnit" Mode="In" Type="String" />
+      <Parameter Name="PermanentAddress" Mode="In" Type="String" />
+      <Parameter Name="SpouseName" Mode="In" Type="String" />
+      <Parameter Name="SpouseOccupation" Mode="In" Type="String" />
+      <Parameter Name="FathersName" Mode="In" Type="String" />
+      <Parameter Name="FathersOccupation" Mode="In" Type="String" />
+      <Parameter Name="MothersMaidenName" Mode="In" Type="String" />
+      <Parameter Name="MothersOccupation" Mode="In" Type="String" />
+      <Parameter Name="EndOfWork" Mode="In" Type="DateTime" />
+      <Parameter Name="OriginalSection" Mode="In" Type="String" />
+      <Parameter Name="TaxExemptCode_orig" Mode="In" Type="String" />
+      <Parameter Name="Activity" Mode="In" Type="String" />
+      <Parameter Name="Course" Mode="In" Type="String" />
+      <Parameter Name="IsLicensed" Mode="In" Type="Boolean" />
+      <Parameter Name="School" Mode="In" Type="String" />
+      <Parameter Name="Position" Mode="In" Type="String" />
+      <Parameter Name="Photo" Mode="In" Type="Binary" />
+      <Parameter Name="HighestEducationalAttainment" Mode="In" Type="String" />
+      <Parameter Name="IDissued" Mode="In" Type="Boolean" />
+      <Parameter Name="InitialEntryBy" Mode="In" Type="String" />
+      <Parameter Name="InitialEntryDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+      <Parameter Name="LastUpdate" Mode="In" Type="DateTime" />
+      <Parameter Name="CostCenter" Mode="In" Type="String" />
+      <Parameter Name="ApptPaperIssued" Mode="In" Type="Boolean" />
+      <Parameter Name="TaxExemptCode" Mode="In" Type="String" />
+      <Parameter Name="NoOfDependents" Mode="In" Type="Byte" />
+      <Parameter Name="EmpJapaneseNameLocation" Mode="In" Type="String" />
+      <Parameter Name="AgencyID" Mode="In" Type="Byte" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SKPI_GetAllEmployees" ReturnType="Collection(HRISModel.SKPI_GetAllEmployees_Result)" />
+    <FunctionImport Name="SKPI_GetAllEmployeesByDepartment" ReturnType="Collection(HRISModel.SKPI_GetAllEmployeesByDepartment_Result)">
+      <Parameter Name="deptcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SKPI_GetAllEmployeesByDepartmentandSection" ReturnType="Collection(HRISModel.SKPI_GetAllEmployeesByDepartmentandSection_Result)">
+      <Parameter Name="deptcode" Mode="In" Type="String" />
+      <Parameter Name="sectcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SKPI_GetAllEmployeesByEmpID" ReturnType="Collection(HRISModel.SKPI_GetAllEmployeesByEmpID_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SKPI_GetAllEmployeesByName" ReturnType="Collection(HRISModel.SKPI_GetAllEmployeesByName_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SKPI_GetDCApprovers_Users" ReturnType="Collection(HRISModel.SKPI_GetDCApprovers_Users_Result)" />
+    <FunctionImport Name="SKPI_GetEmpLoginByID">
+      <Parameter Name="UserID" Mode="In" Type="String" />
+      <Parameter Name="UserPass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SKPI_GetSection">
+      <Parameter Name="deptcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(HRISModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(HRISModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="DCS_GetAdministratorByID_Result">
+    <Property Type="Int32" Name="adminid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+  </ComplexType>
+  <ComplexType Name="DCS_GetAdministratorByName_Result">
+    <Property Type="Int32" Name="adminid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+  </ComplexType>
+  <ComplexType Name="DCS_GetAllAdministrators_Result">
+    <Property Type="Int32" Name="adminid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+  </ComplexType>
+  <ComplexType Name="DCS_GetAllApprovers_Users_Result">
+    <Property Type="Int32" Name="approverid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="reporttype" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DCS_GetAllApprovers_UsersByName_Result">
+    <Property Type="Int32" Name="approverid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="reporttype" Nullable="true" />
+    <Property Type="String" Name="email" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetSelectedEmpforPrintID_Result">
+    <Property Type="String" Name="EmpBarcode" Nullable="false" MaxLength="14" />
+    <Property Type="String" Name="Dept" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BatchNo" Nullable="true" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EmployeeName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Department" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Position" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SSSno" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TIN" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="30" />
+    <Property Type="Binary" Name="EmpPicture" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SKPI_GetAllEmployees_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EStat" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="EmpPicture" Nullable="true" />
+    <Property Type="String" Name="Sex" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="SKPI_GetAllEmployeesByDepartment_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="DeptCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EStat" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="EmpPicture" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SKPI_GetAllEmployeesByDepartmentandSection_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sec_Desc" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EStat" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="EmpPicture" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SKPI_GetAllEmployeesByEmpID_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="38" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EStat" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="EmpPicture" Nullable="true" />
+    <Property Type="Binary" Name="HRISPic" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SKPI_GetAllEmployeesByName_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="DeptCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Department" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="SectCode" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Section" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Position" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EStat" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="EmpPicture" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SKPI_GetDCApprovers_Users_Result">
+    <Property Type="Int32" Name="approverid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="reporttype" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

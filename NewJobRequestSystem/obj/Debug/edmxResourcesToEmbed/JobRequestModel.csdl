@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JobRequestDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JobRequestDBEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="ChangePassword">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="userpass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GenerateJRFNo" ReturnType="Collection(String)">
+      <Parameter Name="inchargeid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetApprover">
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetApproverByEmpID">
+      <Parameter Name="empid" Mode="In" Type="String" />
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAssessment" ReturnType="Collection(JobRequestDBModel.GetAssessment_Result)" />
+    <FunctionImport Name="GetDepartmentManager" ReturnType="Collection(JobRequestDBModel.GetDepartmentManager_Result)" />
+    <FunctionImport Name="GetDepartmentManagerByEmpID" ReturnType="Collection(JobRequestDBModel.GetDepartmentManagerByEmpID_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetDepartmentSupervisor" ReturnType="Collection(JobRequestDBModel.GetDepartmentSupervisor_Result)">
+      <Parameter Name="Code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetDepartmentSupervisorByEmpID" ReturnType="Collection(JobRequestDBModel.GetDepartmentSupervisorByEmpID_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetDepartmentSupervisorIncharge" ReturnType="Collection(JobRequestDBModel.GetDepartmentSupervisorIncharge_Result)">
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetDepartmentSupervisorInchargeByEmpID" ReturnType="Collection(JobRequestDBModel.GetDepartmentSupervisorInchargeByEmpID_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetIncharge" ReturnType="Collection(JobRequestDBModel.GetIncharge_Result)" />
+    <FunctionImport Name="GetInchargePerson" ReturnType="Collection(JobRequestDBModel.GetInchargePerson_Result)">
+      <Parameter Name="inchargeid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetInchargePersonForCC" ReturnType="Collection(JobRequestDBModel.GetInchargePersonForCC_Result)">
+      <Parameter Name="inchargeid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetIncomingRequests" ReturnType="Collection(JobRequestDBModel.GetIncomingRequests_Result)">
+      <Parameter Name="inchargeid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetJigType" ReturnType="Collection(String)" />
+    <FunctionImport Name="GetLeaderForCC">
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRecordRequestType" ReturnType="Collection(JobRequestDBModel.GetRecordRequestType_Result)">
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRequest" ReturnType="Collection(JobRequestDBModel.GetRequest_Result)">
+      <Parameter Name="uc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRequestByIncharge" ReturnType="Collection(JobRequestDBModel.GetRequestByIncharge_Result)">
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRequestType" ReturnType="Collection(String)" />
+    <FunctionImport Name="GetUserByEmpID" ReturnType="Collection(JobRequestDBModel.GetUserByEmpID_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetUserEmail" ReturnType="Collection(JobRequestDBModel.GetUserEmail_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetUserRequests" ReturnType="Collection(JobRequestDBModel.GetUserRequests_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InchargeLogin" ReturnType="Collection(JobRequestDBModel.InchargeLogin_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="userpass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RejectRequest">
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveRequest">
+      <Parameter Name="empid" Mode="In" Type="String" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="SectCode" Mode="In" Type="String" />
+      <Parameter Name="incharge_id" Mode="In" Type="String" />
+      <Parameter Name="customer" Mode="In" Type="String" />
+      <Parameter Name="partname" Mode="In" Type="String" />
+      <Parameter Name="partcode" Mode="In" Type="String" />
+      <Parameter Name="jigtype" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Double" />
+      <Parameter Name="qtyprodperhr" Mode="In" Type="Double" />
+      <Parameter Name="monthly_req" Mode="In" Type="Double" />
+      <Parameter Name="machine_capacity" Mode="In" Type="Double" />
+      <Parameter Name="problem_desc" Mode="In" Type="String" />
+      <Parameter Name="problem_image" Mode="In" Type="String" />
+      <Parameter Name="supportingdocs" Mode="In" Type="String" />
+      <Parameter Name="attachmentname" Mode="In" Type="String" />
+      <Parameter Name="attachmenttype" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSelectedRequestType">
+      <Parameter Name="request_type" Mode="In" Type="String" />
+      <Parameter Name="reqtype_details" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignature">
+      <Parameter Name="requestedby" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureBothSVandManager">
+      <Parameter Name="appr_requestorleader" Mode="In" Type="String" />
+      <Parameter Name="appr_requestorleader_remarks" Mode="In" Type="String" />
+      <Parameter Name="appr_checker_manager" Mode="In" Type="String" />
+      <Parameter Name="appr_checker_manager_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForAssesstor">
+      <Parameter Name="assessedby" Mode="In" Type="String" />
+      <Parameter Name="assesstor_remarks" Mode="In" Type="String" />
+      <Parameter Name="jrfno" Mode="In" Type="String" />
+      <Parameter Name="isjigexists" Mode="In" Type="Boolean" />
+      <Parameter Name="assessmentcode" Mode="In" Type="String" />
+      <Parameter Name="assessmentremarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForAssesstorCannotProceed">
+      <Parameter Name="assessmentcode" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForBothApprover">
+      <Parameter Name="appr_noter_sv" Mode="In" Type="String" />
+      <Parameter Name="appr_noter_sv_remarks" Mode="In" Type="String" />
+      <Parameter Name="appr_final_mng" Mode="In" Type="String" />
+      <Parameter Name="appr_final_mng_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForFinalAcceptance">
+      <Parameter Name="finalacceptanceby" Mode="In" Type="String" />
+      <Parameter Name="accept_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForFirstApprover">
+      <Parameter Name="appr_noter_sv" Mode="In" Type="String" />
+      <Parameter Name="appr_noter_sv_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForFirstChecker">
+      <Parameter Name="appr_checker_sv" Mode="In" Type="String" />
+      <Parameter Name="appr_checker_sv_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForSecondApprover">
+      <Parameter Name="appr_final_mng" Mode="In" Type="String" />
+      <Parameter Name="appr_final_mng_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SaveSignatureForSecondChecker">
+      <Parameter Name="appr_checker_manager" Mode="In" Type="String" />
+      <Parameter Name="appr_checker_manager_remarks" Mode="In" Type="String" />
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(JobRequestDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(JobRequestDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="UpdateCompletion">
+      <Parameter Name="jr_code" Mode="In" Type="String" />
+      <Parameter Name="completiondate" Mode="In" Type="DateTime" />
+      <Parameter Name="jighistoryattachment" Mode="In" Type="String" />
+      <Parameter Name="jighistoryfilename" Mode="In" Type="String" />
+      <Parameter Name="jighistorycontenttype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserLogin" ReturnType="Collection(JobRequestDBModel.UserLogin_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="userpass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetManager" ReturnType="Collection(JobRequestDBModel.GetManager_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetSV_HeadBySubordinate" ReturnType="Collection(JobRequestDBModel.GetSV_HeadBySubordinate_Result)">
+      <Parameter Name="empid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetManagerForIT" ReturnType="Collection(JobRequestDBModel.GetManagerForIT_Result)" />
+    <FunctionImport Name="GetManagerForSafety" ReturnType="Collection(JobRequestDBModel.GetManagerForSafety_Result)" />
+    <FunctionImport Name="GetManagerForSmart" ReturnType="Collection(JobRequestDBModel.GetManagerForSmart_Result)" />
+    <FunctionImport Name="GetVicePresident" ReturnType="Collection(JobRequestDBModel.GetVicePresident_Result)" />
+    <FunctionImport Name="VerifyIfEmployeeIsAvailable" ReturnType="Collection(Int32)">
+      <Parameter Name="EmpID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllApprovers" ReturnType="Collection(JobRequestDBModel.GetAllApprovers_Result)" />
+    <EntitySet Name="sysdiagrams" EntityType="JobRequestDBModel.sysdiagram" />
+    <EntitySet Name="tblApprovers" EntityType="JobRequestDBModel.tblApprover" />
+    <EntitySet Name="tblAssessments" EntityType="JobRequestDBModel.tblAssessment" />
+    <EntitySet Name="tblAttachments" EntityType="JobRequestDBModel.tblAttachment" />
+    <EntitySet Name="tblEmailLogs" EntityType="JobRequestDBModel.tblEmailLog" />
+    <EntitySet Name="tblIncharges" EntityType="JobRequestDBModel.tblIncharge" />
+    <EntitySet Name="tblInchargePersons" EntityType="JobRequestDBModel.tblInchargePerson" />
+    <EntitySet Name="tblJigTypes" EntityType="JobRequestDBModel.tblJigType" />
+    <EntitySet Name="tblLeaderSubordinates" EntityType="JobRequestDBModel.tblLeaderSubordinate" />
+    <EntitySet Name="tblRequestTypes" EntityType="JobRequestDBModel.tblRequestType" />
+    <EntitySet Name="tblRequestType_Selected" EntityType="JobRequestDBModel.tblRequestType_Selected" />
+    <EntitySet Name="tblSignatories" EntityType="JobRequestDBModel.tblSignatory" />
+    <EntitySet Name="tblUniqueCodes" EntityType="JobRequestDBModel.tblUniqueCode" />
+    <EntitySet Name="tblUsers" EntityType="JobRequestDBModel.tblUser" />
+    <EntitySet Name="tblRequests" EntityType="JobRequestDBModel.tblRequest" />
+  </EntityContainer>
+  <ComplexType Name="GetAssessment_Result">
+    <Property Type="String" Name="assessment" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="GetDepartmentManager_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetDepartmentManagerByEmpID_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+    <Property Type="String" Name="EmpID1" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+  </ComplexType>
+  <ComplexType Name="GetDepartmentSupervisor_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+    <Property Type="String" Name="EmpID1" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+  </ComplexType>
+  <ComplexType Name="GetDepartmentSupervisorByEmpID_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+    <Property Type="String" Name="EmpID1" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+  </ComplexType>
+  <ComplexType Name="GetDepartmentSupervisorIncharge_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetDepartmentSupervisorInchargeByEmpID_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetIncharge_Result">
+    <Property Type="String" Name="incharge_id" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="incharge" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetInchargePerson_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+    <Property Type="String" Name="incharge_id" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="GetInchargePersonForCC_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+    <Property Type="String" Name="EmpID1" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="incharge_id" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="GetIncomingRequests_Result">
+    <Property Type="Int32" Name="reqid" Nullable="false" />
+    <Property Type="String" Name="emp_id" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="jrf_no" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="jrf_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DeptCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="SectCode" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="request_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="incharge_id" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="customer" Nullable="true" />
+    <Property Type="String" Name="partname" Nullable="true" />
+    <Property Type="String" Name="partcode" Nullable="true" />
+    <Property Type="String" Name="jigtype" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="quantity" Nullable="true" />
+    <Property Type="Double" Name="qtyprodperhr" Nullable="true" />
+    <Property Type="Double" Name="monthly_req" Nullable="true" />
+    <Property Type="Double" Name="machine_capacity" Nullable="true" />
+    <Property Type="String" Name="problem_desc" Nullable="true" />
+    <Property Type="String" Name="problem_image" Nullable="true" />
+    <Property Type="String" Name="supportingdocs" Nullable="true" />
+    <Property Type="String" Name="attachmentname" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="attachmenttype" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isjigexists" Nullable="true" />
+    <Property Type="String" Name="assessmentremarks" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="jr_code" Nullable="false" MaxLength="350" />
+    <Property Type="Boolean" Name="is_submitted" Nullable="true" />
+    <Property Type="Boolean" Name="is_checked" Nullable="true" />
+    <Property Type="Boolean" Name="is_reviewed" Nullable="true" />
+    <Property Type="Boolean" Name="is_assessed" Nullable="true" />
+    <Property Type="Boolean" Name="is_noted" Nullable="true" />
+    <Property Type="Boolean" Name="is_approved" Nullable="true" />
+    <Property Type="Boolean" Name="iscompleted" Nullable="true" />
+    <Property Type="DateTime" Name="completion_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="repairedby" Nullable="true" />
+    <Property Type="String" Name="jighistoryattachment" Nullable="true" />
+    <Property Type="String" Name="jighistoryfilename" Nullable="true" />
+    <Property Type="String" Name="jighistorycontenttype" Nullable="true" />
+    <Property Type="Boolean" Name="is_useraccepted" Nullable="true" />
+    <Property Type="Boolean" Name="iscancelled" Nullable="true" />
+    <Property Type="Boolean" Name="isrejected" Nullable="true" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="74" />
+    <Property Type="String" Name="ReqStat" Nullable="true" MaxLength="9" />
+  </ComplexType>
+  <ComplexType Name="GetRecordRequestType_Result">
+    <Property Type="Int32" Name="reqrtype_selid" Nullable="false" />
+    <Property Type="String" Name="request_type" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="reqtype_details" Nullable="true" />
+    <Property Type="String" Name="jr_code" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetRequest_Result">
+    <Property Type="Int32" Name="reqid" Nullable="false" />
+    <Property Type="String" Name="emp_id" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="jrf_no" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="jrf_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DeptCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="SectCode" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="request_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="incharge_id" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="customer" Nullable="true" />
+    <Property Type="String" Name="partname" Nullable="true" />
+    <Property Type="String" Name="partcode" Nullable="true" />
+    <Property Type="String" Name="jigtype" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="quantity" Nullable="true" />
+    <Property Type="Double" Name="qtyprodperhr" Nullable="true" />
+    <Property Type="Double" Name="monthly_req" Nullable="true" />
+    <Property Type="Double" Name="machine_capacity" Nullable="true" />
+    <Property Type="String" Name="problem_desc" Nullable="true" />
+    <Property Type="String" Name="problem_image" Nullable="true" />
+    <Property Type="String" Name="supportingdocs" Nullable="true" />
+    <Property Type="String" Name="attachmentname" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="attachmenttype" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isjigexists" Nullable="true" />
+    <Property Type="String" Name="assessmentremarks" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="jr_code" Nullable="false" MaxLength="350" />
+    <Property Type="Boolean" Name="is_submitted" Nullable="true" />
+    <Property Type="Boolean" Name="is_checked" Nullable="true" />
+    <Property Type="Boolean" Name="is_reviewed" Nullable="true" />
+    <Property Type="Boolean" Name="is_assessed" Nullable="true" />
+    <Property Type="Boolean" Name="is_noted" Nullable="true" />
+    <Property Type="Boolean" Name="is_approved" Nullable="true" />
+    <Property Type="Boolean" Name="iscompleted" Nullable="true" />
+    <Property Type="DateTime" Name="completion_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="repairedby" Nullable="true" />
+    <Property Type="String" Name="jighistoryattachment" Nullable="true" />
+    <Property Type="String" Name="jighistoryfilename" Nullable="true" />
+    <Property Type="String" Name="jighistorycontenttype" Nullable="true" />
+    <Property Type="Boolean" Name="is_useraccepted" Nullable="true" />
+    <Property Type="Boolean" Name="iscancelled" Nullable="true" />
+    <Property Type="Boolean" Name="isrejected" Nullable="true" />
+    <Property Type="String" Name="incharge_id1" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="incharge" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessment" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode1" Nullable="true" MaxLength="2" />
+    <Property Type="Int16" Name="BatchNo" Nullable="true" />
+    <Property Type="Int16" Name="SerialID" Nullable="true" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="AddressStreet" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="AddressCity" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="AddressProvince" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="AddressCountry" Nullable="true" MaxLength="25" />
+    <Property Type="Int16" Name="AddrCity" Nullable="true" />
+    <Property Type="Byte" Name="AddrProvince" Nullable="true" />
+    <Property Type="Byte" Name="AddrCountry" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Sex" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="16" />
+    <Property Type="DateTime" Name="HireDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="EmploymentStatus" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Nationality" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Religion" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CivilStatus" Nullable="true" MaxLength="1" />
+    <Property Type="Byte" Name="NoOfDependents_orig" Nullable="true" />
+    <Property Type="String" Name="HighestEducationalAttainment_orig" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="PositionHeld" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Department" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Section" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="SubSection" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="SSSno" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="PHno" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="PagIbigNo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TIN" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="EmpPicture" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ContactAddress" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="PayMode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Height" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="HeightUnit" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="Weight" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="WeightUnit" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="PermanentAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SpouseName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SpouseOccupation" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FathersName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FathersOccupation" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="MothersMaidenName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MothersOccupation" Nullable="true" MaxLength="35" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="16" />
+    <Property Type="String" Name="OriginalSection" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="TaxExemptCode_orig" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Activity" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Course" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsLicensed" Nullable="true" />
+    <Property Type="String" Name="School" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Position" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Photo" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="HighestEducationalAttainment" Nullable="true" MaxLength="2" />
+    <Property Type="Boolean" Name="IDissued" Nullable="true" />
+    <Property Type="String" Name="InitialEntryBy" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="InitialEntryDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="LastUpdate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CostCenter" Nullable="true" MaxLength="2" />
+    <Property Type="Boolean" Name="ApptPaperIssued" Nullable="true" />
+    <Property Type="String" Name="TaxExemptCode" Nullable="true" MaxLength="3" />
+    <Property Type="Byte" Name="NoOfDependents" Nullable="true" />
+    <Property Type="String" Name="EmpJapaneseNameLocation" Nullable="true" MaxLength="255" />
+    <Property Type="Byte" Name="AgencyID" Nullable="true" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="ReqStat" Nullable="true" MaxLength="9" />
+  </ComplexType>
+  <ComplexType Name="GetRequestByIncharge_Result">
+    <Property Type="Int32" Name="reqid" Nullable="false" />
+    <Property Type="String" Name="emp_id" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="jrf_no" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="jrf_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DeptCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="SectCode" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="request_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="incharge_id" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="customer" Nullable="true" />
+    <Property Type="String" Name="partname" Nullable="true" />
+    <Property Type="String" Name="partcode" Nullable="true" />
+    <Property Type="String" Name="jigtype" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="quantity" Nullable="true" />
+    <Property Type="Double" Name="qtyprodperhr" Nullable="true" />
+    <Property Type="Double" Name="monthly_req" Nullable="true" />
+    <Property Type="Double" Name="machine_capacity" Nullable="true" />
+    <Property Type="String" Name="problem_desc" Nullable="true" />
+    <Property Type="String" Name="problem_image" Nullable="true" />
+    <Property Type="String" Name="supportingdocs" Nullable="true" />
+    <Property Type="String" Name="attachmentname" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="attachmenttype" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isjigexists" Nullable="true" />
+    <Property Type="String" Name="assessmentremarks" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="jr_code" Nullable="false" MaxLength="350" />
+    <Property Type="Boolean" Name="is_submitted" Nullable="true" />
+    <Property Type="Boolean" Name="is_checked" Nullable="true" />
+    <Property Type="Boolean" Name="is_reviewed" Nullable="true" />
+    <Property Type="Boolean" Name="is_assessed" Nullable="true" />
+    <Property Type="Boolean" Name="is_noted" Nullable="true" />
+    <Property Type="Boolean" Name="is_approved" Nullable="true" />
+    <Property Type="Boolean" Name="iscompleted" Nullable="true" />
+    <Property Type="DateTime" Name="completion_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="repairedby" Nullable="true" />
+    <Property Type="String" Name="jighistoryattachment" Nullable="true" />
+    <Property Type="String" Name="jighistoryfilename" Nullable="true" />
+    <Property Type="String" Name="jighistorycontenttype" Nullable="true" />
+    <Property Type="Boolean" Name="is_useraccepted" Nullable="true" />
+    <Property Type="Boolean" Name="iscancelled" Nullable="true" />
+    <Property Type="Boolean" Name="isrejected" Nullable="true" />
+    <Property Type="String" Name="incharge_id1" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="incharge" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessment" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode1" Nullable="false" MaxLength="2" />
+    <Property Type="Int16" Name="BatchNo" Nullable="false" />
+    <Property Type="Int16" Name="SerialID" Nullable="false" />
+    <Property Type="String" Name="EmpID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="AddressStreet" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="AddressCity" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="AddressProvince" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="AddressCountry" Nullable="true" MaxLength="25" />
+    <Property Type="Int16" Name="AddrCity" Nullable="true" />
+    <Property Type="Byte" Name="AddrProvince" Nullable="true" />
+    <Property Type="Byte" Name="AddrCountry" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Sex" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="false" Precision="16" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="16" />
+    <Property Type="String" Name="EmploymentStatus" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Nationality" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Religion" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CivilStatus" Nullable="true" MaxLength="1" />
+    <Property Type="Byte" Name="NoOfDependents_orig" Nullable="false" />
+    <Property Type="String" Name="HighestEducationalAttainment_orig" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="PositionHeld" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Department" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Section" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="SubSection" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="SSSno" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="PHno" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="PagIbigNo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TIN" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="EmpPicture" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="ContactPhone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ContactAddress" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="PayMode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Height" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="HeightUnit" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="Weight" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="WeightUnit" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="PermanentAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SpouseName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SpouseOccupation" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FathersName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FathersOccupation" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="MothersMaidenName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MothersOccupation" Nullable="true" MaxLength="35" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="16" />
+    <Property Type="String" Name="OriginalSection" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="TaxExemptCode_orig" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="Activity" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Course" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsLicensed" Nullable="false" />
+    <Property Type="String" Name="School" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Position" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Photo" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="HighestEducationalAttainment" Nullable="true" MaxLength="2" />
+    <Property Type="Boolean" Name="IDissued" Nullable="false" />
+    <Property Type="String" Name="InitialEntryBy" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="InitialEntryDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="LastUpdate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CostCenter" Nullable="true" MaxLength="2" />
+    <Property Type="Boolean" Name="ApptPaperIssued" Nullable="false" />
+    <Property Type="String" Name="TaxExemptCode" Nullable="true" MaxLength="3" />
+    <Property Type="Byte" Name="NoOfDependents" Nullable="false" />
+    <Property Type="String" Name="EmpJapaneseNameLocation" Nullable="false" MaxLength="255" />
+    <Property Type="Byte" Name="AgencyID" Nullable="true" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="ReqStat" Nullable="true" MaxLength="9" />
+  </ComplexType>
+  <ComplexType Name="GetUserByEmpID_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetUserEmail_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetUserRequests_Result">
+    <Property Type="Int32" Name="reqid" Nullable="false" />
+    <Property Type="String" Name="emp_id" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="jrf_no" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="jrf_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DeptCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="SectCode" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="request_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="incharge_id" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="customer" Nullable="true" />
+    <Property Type="String" Name="partname" Nullable="true" />
+    <Property Type="String" Name="partcode" Nullable="true" />
+    <Property Type="String" Name="jigtype" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="quantity" Nullable="true" />
+    <Property Type="Double" Name="qtyprodperhr" Nullable="true" />
+    <Property Type="Double" Name="monthly_req" Nullable="true" />
+    <Property Type="Double" Name="machine_capacity" Nullable="true" />
+    <Property Type="String" Name="problem_desc" Nullable="true" />
+    <Property Type="String" Name="problem_image" Nullable="true" />
+    <Property Type="String" Name="supportingdocs" Nullable="true" />
+    <Property Type="String" Name="attachmentname" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="attachmenttype" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isjigexists" Nullable="true" />
+    <Property Type="String" Name="assessmentremarks" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="assessmentcode" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="jr_code" Nullable="false" MaxLength="350" />
+    <Property Type="Boolean" Name="is_submitted" Nullable="true" />
+    <Property Type="Boolean" Name="is_checked" Nullable="true" />
+    <Property Type="Boolean" Name="is_reviewed" Nullable="true" />
+    <Property Type="Boolean" Name="is_assessed" Nullable="true" />
+    <Property Type="Boolean" Name="is_noted" Nullable="true" />
+    <Property Type="Boolean" Name="is_approved" Nullable="true" />
+    <Property Type="Boolean" Name="iscompleted" Nullable="true" />
+    <Property Type="DateTime" Name="completion_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="repairedby" Nullable="true" />
+    <Property Type="String" Name="jighistoryattachment" Nullable="true" />
+    <Property Type="String" Name="jighistoryfilename" Nullable="true" />
+    <Property Type="String" Name="jighistorycontenttype" Nullable="true" />
+    <Property Type="Boolean" Name="is_useraccepted" Nullable="true" />
+    <Property Type="Boolean" Name="iscancelled" Nullable="true" />
+    <Property Type="Boolean" Name="isrejected" Nullable="true" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="74" />
+    <Property Type="String" Name="ReqStat" Nullable="true" MaxLength="9" />
+  </ComplexType>
+  <ComplexType Name="InchargeLogin_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+    <Property Type="String" Name="empid1" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="incharge_id" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="incharge_id1" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="incharge" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserLogin_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="empid" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="username" Nullable="true" />
+    <Property Type="String" Name="userpass" Nullable="true" />
+    <Property Type="String" Name="userrole" Nullable="true" />
+    <Property Type="String" Name="accttype" Nullable="true" />
+    <Property Type="String" Name="emailadd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetManager_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="41" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetSV_HeadBySubordinate_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="41" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetManagerForIT_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="41" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetManagerForSafety_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="41" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetManagerForSmart_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="41" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetVicePresident_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="FullName_FnameFirst" Nullable="true" MaxLength="71" />
+    <Property Type="String" Name="RName" Nullable="true" MaxLength="41" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetAllApprovers_Result">
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="SerialID" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Dept_Code" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Dept_Desc" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Sect_Code" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Sect_Desc" Nullable="false" MaxLength="35" />
+    <Property Type="String" Name="FullName_LnameFirst" Nullable="true" MaxLength="72" />
+    <Property Type="String" Name="PositionCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Pos_Desc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EStatCode" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EStat" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="HireDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndOfWork" Nullable="true" Precision="23" />
+    <Property Type="String" Name="EmailAdd" Nullable="true" />
+    <Property Type="String" Name="UserRole" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblApprover">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="OrderValue" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblAssessment">
+    <Key>
+      <PropertyRef Name="AssessmentCode" />
+    </Key>
+    <Property Name="ID" Type="Int32" />
+    <Property Name="Assessment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AssessmentCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblAttachment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="attachmentfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="contenttype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="attachmentname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="typeofattachment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="issubmitted" Type="Boolean" />
+    <Property Name="PreparedBy" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="IsPrepared" Type="Boolean" />
+    <Property Name="CheckedBy" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="IsChecked" Type="Boolean" />
+    <Property Name="IsCheckerReviewed" Type="Boolean" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="IsApproved" Type="Boolean" />
+    <Property Name="IsApproverReviewed" Type="Boolean" />
+    <Property Name="jr_code" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="datecreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblEmailLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SentTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="JR_Code" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblIncharge">
+    <Key>
+      <PropertyRef Name="Incharge_ID" />
+    </Key>
+    <Property Name="Incharge_ID" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Incharge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblInchargePerson">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="Incharge_ID" />
+    </Key>
+    <Property Name="EmpID" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Incharge_ID" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="IsAssesstor" Type="Boolean" />
+    <Property Name="IsNoter" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblJigType">
+    <Key>
+      <PropertyRef Name="JigType" />
+    </Key>
+    <Property Name="JigType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblLeaderSubordinate">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="LeaderEmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblRequestType">
+    <Key>
+      <PropertyRef Name="RequestTypeCode" />
+    </Key>
+    <Property Name="RequestTypeCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="Request_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblRequestType_Selected">
+    <Key>
+      <PropertyRef Name="reqrtype_selid" />
+    </Key>
+    <Property Name="reqrtype_selid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestTypeCode" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="JR_Code" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSignatory">
+    <Key>
+      <PropertyRef Name="signid" />
+    </Key>
+    <Property Name="signid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Req_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateRequested" Type="DateTime" Precision="0" />
+    <Property Name="Checker" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CheckerRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateChecked" Type="DateTime" Precision="0" />
+    <Property Name="AssessedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AssessedRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateAssessed" Type="DateTime" Precision="0" />
+    <Property Name="Noter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NoterRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateNoted" Type="DateTime" Precision="0" />
+    <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ManagerRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateApproved" Type="DateTime" Precision="0" />
+    <Property Name="FinalAcceptanceBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AcceptRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateAccepted" Type="DateTime" Precision="0" />
+    <Property Name="JR_Code" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblUniqueCode">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jr_code" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="isused" Type="Boolean" />
+    <Property Name="creationdatetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="UserRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddsss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblRequest">
+    <Key>
+      <PropertyRef Name="ReqID" />
+    </Key>
+    <Property Name="ReqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="JRF_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JRF_Date" Type="DateTime" Precision="3" />
+    <Property Name="DeptCode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SectCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Request_Date" Type="DateTime" Precision="3" />
+    <Property Name="Incharge_ID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Partname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Partcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="JigType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="QtyProdPerHr" Type="Double" />
+    <Property Name="Monthly_Req" Type="Double" />
+    <Property Name="Machine_Capacity" Type="Double" />
+    <Property Name="NextForeCast" Type="Double" />
+    <Property Name="Problem_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AssessmentRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AssessmentCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="IsExistingJig" Type="Boolean" />
+    <Property Name="JR_Code" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="Req_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Submitted" Type="Boolean" />
+    <Property Name="Checker" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CheckerRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateChecked" Type="DateTime" Precision="0" />
+    <Property Name="Is_Checked" Type="Boolean" />
+    <Property Name="Is_Reviewed" Type="Boolean" />
+    <Property Name="AssessedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AssessedRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateAssessed" Type="DateTime" Precision="0" />
+    <Property Name="Is_Assessed" Type="Boolean" />
+    <Property Name="Noter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NoterRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateNoted" Type="DateTime" Precision="0" />
+    <Property Name="Is_Noted" Type="Boolean" />
+    <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ManagerRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateApproved" Type="DateTime" Precision="0" />
+    <Property Name="Is_Approved" Type="Boolean" />
+    <Property Name="Is_JobAccepted" Type="Boolean" />
+    <Property Name="AttachementStatus" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Is_AttachmentApproved" Type="Boolean" />
+    <Property Name="FinalAcceptanceBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AcceptRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateAccepted" Type="DateTime" Precision="0" />
+    <Property Name="IsCompleted" Type="Boolean" />
+    <Property Name="Completion_Date" Type="DateTime" Precision="3" />
+    <Property Name="Repairedby" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsCancelled" Type="Boolean" />
+    <Property Name="IsRejected" Type="Boolean" />
+    <Property Name="RejectRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsHold" Type="Boolean" />
+    <Property Name="HoldBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HoldRemarks" Type="String" MaxLength="900" FixedLength="false" Unicode="true" />
+    <Property Name="CompletionRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsSentToApprover_First" Type="Boolean" />
+    <Property Name="IsSentToApprover_Second" Type="Boolean" />
+    <Property Name="SecondSendDate" Type="DateTime" Precision="3" />
+    <Property Name="IsSentToApprover_Third" Type="Boolean" />
+    <Property Name="ThirdSendDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDateTime" Type="DateTime" Precision="3" />
+    <Property Name="SampleCounter" Type="Int32" />
+    <Property Name="RequestorsRemarks" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

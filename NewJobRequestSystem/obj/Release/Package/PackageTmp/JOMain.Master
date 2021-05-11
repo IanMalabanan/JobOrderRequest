@@ -1,0 +1,287 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="JOMain.master.cs" Inherits="NewJobRequestSystem.JOMain" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Home</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="shortcut icon" href="images/sohbiicon.ico" />
+
+    <link href="Bootstrap/mycss.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="Bootstrap/Login/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="Bootstrap/Login/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="Bootstrap/Login/vendors/nprogress/nprogress.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="Bootstrap/Login/build/css/custom.min.css" rel="stylesheet" />
+
+    <style>
+        .centermessage {
+            text-align: center;
+        }
+
+        .titleform {
+            font-size: 18px;
+            font-family: Calibri;
+        }
+
+        table {
+            border: 1px solid #ccc;
+        }
+
+            table th {
+                background-color: #F7F7F7;
+                color: #333;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                padding: 5px;
+                border-color: #ccc;
+            }
+
+        #inputs input combobox {
+            background: #f1f1f1;
+            padding: 6px 5px;
+            margin: 0 0 5px 0;
+            width: 178px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px #ccc inset;
+        }
+
+        /** Columns */
+        .rcbHeader ul,
+        .rcbFooter ul,
+        .rcbItem ul,
+        .rcbHovered ul,
+        .rcbDisabled ul {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: inline-block;
+            list-style-type: none;
+        }
+
+        .exampleRadComboBox.RadComboBoxDropDown .rcbHeader {
+            padding: 5px 27px 4px 7px;
+        }
+
+        .rcbScroll {
+            overflow: scroll !important;
+            overflow-x: hidden !important;
+        }
+
+        .col2 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 70%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col2_3 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 60%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col2_2 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 35%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col3 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 35%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col1 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 30%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col1_2 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 40%;
+            line-height: 14px;
+            float: left;
+        }
+    </style>
+
+</head>
+
+<body class="nav-md">
+
+    <div class="container body">
+
+        <div class="main_container">
+            
+            <div class="col-md-3 left_col  menu_fixed ">
+                
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="padding-left: 15px; padding-right: 15px;">
+                         <a runat="server" onserverclick="lnkHome" class="site_title">
+                            <img src="images/skpilogopic.png" style="height: 40px; width: 40px; margin-left: -12px" /><span style="font-size: 13px;">&nbsp;&nbsp;Sohbi Kohgei Phils. Inc.</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info  -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="images/user.jpg" id="userpic" runat="server" alt="..." class="img-circle profile_img" style="margin-top:40px;" />
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <br />
+
+                            <h2 runat="server" id="lblName">
+                                
+                            </h2>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu" style="padding-left: 10px !important;">
+                                <li><a runat="server" onserverclick="lnkHome"><i class="fa fa-home"></i>Main</a></li>
+
+                                <li><a href="NewRequest.aspx" runat="server"><i class="fa fa-lightbulb-o"></i>New Request</a></li>
+
+                                <%--<li><a href="#" runat="server"><i class="fa fa-car"></i>Driver and Vehicle Allocation</a></li>
+
+                                <li class=""><a href="#" runat="server" id="A1"><i class="fa fa-users"></i>Others<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#" runat="server" id="userslink">SKPI Users</a></li>
+                                        <li><a href="#" runat="server" id="A2">Employee Superior</a></li>
+                                        <li><a href="#" runat="server">Drivers</a></li>
+                                        <li><a href="#" runat="server">Nurses</a></li>
+                                        <li><a href="#" runat="server">Guards</a></li>
+                                        <li><a href="#" runat="server">Company Vehicles</a></li>
+                                    </ul>
+                                </li>--%>
+
+                                <li><a runat="server" id="linkSignout" onserverclick="Logout"><i class="fa fa-power-off"></i>Signout</a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    <!-- /menu footer buttons -->
+                
+                </div>
+            
+            </div>
+
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+                                    <br />
+                                </a>
+
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <form id="form1" runat="server">
+
+                <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
+
+                <div class="right_col" role="main">
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+
+            </form>
+            <!-- /page content -->
+
+        </div>
+
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="Bootstrap/Login/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="Bootstrap/Login/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="Bootstrap/Login/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="Bootstrap/Login/vendors/nprogress/nprogress.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="Bootstrap/Login/build/js/custom.min.js"></script>
+
+
+
+
+    <!-- footer content -->
+    <footer class="footer_fixed">
+        <div class="pull-right">
+            <strong>Copyright &copy; 2020 <a href="#">Sohbi.com.ph</a>.</strong> All rights reserved.
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd8406544c4a4011b898ed193bf6e020" Name="Diagram1">
+        <EntityTypeShape EntityType="HRISModel.sysdiagram" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_City" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_CivilStatus" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_COEBodyTemplate" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Country" Width="1.5" PointX="1.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Department" Width="1.5" PointX="1.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_DepartmentalSection" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_DependentRelation" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EducationalAttainment" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpAddress" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpDependents" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpEducationalBackground" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpMaster" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpPrintID" Width="1.5" PointX="5.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpReClassification" Width="1.5" PointX="11.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpStatus" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpTrainingsSeminars" Width="1.5" PointX="5.25" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmpWorkExperience" Width="1.5" PointX="5.25" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_HeightUnit" Width="1.5" PointX="0.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Nationality" Width="1.5" PointX="0.75" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_PayMode" Width="1.5" PointX="9" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Position" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Province" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Religion" Width="1.5" PointX="0.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Sex" Width="1.5" PointX="0.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_ShuttleDestination" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_TempEmpDependents" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_TempEmpWorkExp" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_Users" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_UserType" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_WeightUnit" Width="1.5" PointX="0.75" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.tblSystemFile" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.tblSystemVersion" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_COETemplateForPrinting" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_COEType" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISModel.t_EmployeeFingerData" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="HRISModel.FK_t_City_t_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpAddress_t_City" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_CivilStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_Province_t_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_tblDepartmentalSection_tblDepartment1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_DepartmentalSection" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_DepartmentalSection" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_DepartmentalSection1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpDependents_t_DependentRelation" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_EducationalAttainment" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpAddress_t_EmpMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpDependents_t_EmpMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpEducationalBackground_t_EmpMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_HeightUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_Sex" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpMaster_t_WeightUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpPrintID_t_EmpMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_EmpMaster1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpTrainingsSeminars_t_EmpMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpWorkExperience_t_EmpMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_tblEmployeeMaster_tblEmploymentStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_tblEmployeeMaster_tblNationality" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_tblEmployeeMaster_tblPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_PayMode" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_PayMode1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISModel.FK_t_EmpReClassification_t_Position1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

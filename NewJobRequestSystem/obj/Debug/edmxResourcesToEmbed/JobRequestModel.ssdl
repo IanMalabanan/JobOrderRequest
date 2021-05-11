@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JobRequestDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblApprovers">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="OrderValue" Type="int" />
+  </EntityType>
+  <EntityType Name="tblAssessment">
+    <Key>
+      <PropertyRef Name="AssessmentCode" />
+    </Key>
+    <Property Name="ID" Type="int" />
+    <Property Name="Assessment" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssessmentCode" Type="char" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAttachment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="attachmentfile" Type="nvarchar(max)" />
+    <Property Name="contenttype" Type="varchar(max)" />
+    <Property Name="attachmentname" Type="varchar(max)" />
+    <Property Name="typeofattachment" Type="varchar" MaxLength="50" />
+    <Property Name="issubmitted" Type="bit" />
+    <Property Name="PreparedBy" Type="varchar" MaxLength="350" />
+    <Property Name="IsPrepared" Type="bit" />
+    <Property Name="CheckedBy" Type="varchar" MaxLength="350" />
+    <Property Name="IsChecked" Type="bit" />
+    <Property Name="IsCheckerReviewed" Type="bit" />
+    <Property Name="ApprovedBy" Type="varchar" MaxLength="350" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="IsApproverReviewed" Type="bit" />
+    <Property Name="jr_code" Type="nvarchar" MaxLength="350" />
+    <Property Name="datecreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblEmailLogs">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailUrl" Type="varchar(max)" />
+    <Property Name="UserRole" Type="varchar(max)" />
+    <Property Name="EmailAdd" Type="varchar(max)" />
+    <Property Name="EmailFrom" Type="varchar(max)" />
+    <Property Name="SentTo" Type="varchar(max)" />
+    <Property Name="JR_Code" Type="nvarchar" MaxLength="350" />
+    <Property Name="CreationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblIncharge">
+    <Key>
+      <PropertyRef Name="Incharge_ID" />
+    </Key>
+    <Property Name="Incharge_ID" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Incharge" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblInchargePerson">
+    <Key>
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="Incharge_ID" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Incharge_ID" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="IsAssesstor" Type="bit" />
+    <Property Name="IsNoter" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblJigType">
+    <Key>
+      <PropertyRef Name="JigType" />
+    </Key>
+    <Property Name="JigType" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblLeaderSubordinates">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="LeaderEmpID" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="tblRequest">
+    <Key>
+      <PropertyRef Name="ReqID" />
+    </Key>
+    <Property Name="ReqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="varchar" MaxLength="12" />
+    <Property Name="JRF_No" Type="varchar" MaxLength="50" />
+    <Property Name="JRF_Date" Type="datetime" />
+    <Property Name="DeptCode" Type="char" MaxLength="1" />
+    <Property Name="SectCode" Type="char" MaxLength="2" />
+    <Property Name="Request_Date" Type="datetime" />
+    <Property Name="Incharge_ID" Type="char" MaxLength="2" />
+    <Property Name="Customer" Type="varchar(max)" />
+    <Property Name="Partname" Type="varchar(max)" />
+    <Property Name="Partcode" Type="varchar(max)" />
+    <Property Name="JigType" Type="varchar" MaxLength="50" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="QtyProdPerHr" Type="float" />
+    <Property Name="Monthly_Req" Type="float" />
+    <Property Name="Machine_Capacity" Type="float" />
+    <Property Name="NextForeCast" Type="float" />
+    <Property Name="Problem_Desc" Type="varchar(max)" />
+    <Property Name="AssessmentRemarks" Type="varchar(max)" />
+    <Property Name="AssessmentCode" Type="char" MaxLength="2" />
+    <Property Name="IsExistingJig" Type="bit" />
+    <Property Name="JR_Code" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="Req_Remarks" Type="varchar(max)" />
+    <Property Name="Is_Submitted" Type="bit" />
+    <Property Name="Checker" Type="varchar(max)" />
+    <Property Name="CheckerRemarks" Type="varchar(max)" />
+    <Property Name="DateChecked" Type="date" />
+    <Property Name="Is_Checked" Type="bit" />
+    <Property Name="Is_Reviewed" Type="bit" />
+    <Property Name="AssessedBy" Type="varchar(max)" />
+    <Property Name="AssessedRemarks" Type="varchar(max)" />
+    <Property Name="DateAssessed" Type="date" />
+    <Property Name="Is_Assessed" Type="bit" />
+    <Property Name="Noter" Type="varchar(max)" />
+    <Property Name="NoterRemarks" Type="varchar(max)" />
+    <Property Name="DateNoted" Type="date" />
+    <Property Name="Is_Noted" Type="bit" />
+    <Property Name="Manager" Type="varchar(max)" />
+    <Property Name="ManagerRemarks" Type="varchar(max)" />
+    <Property Name="DateApproved" Type="date" />
+    <Property Name="Is_Approved" Type="bit" />
+    <Property Name="Is_JobAccepted" Type="bit" />
+    <Property Name="AttachementStatus" Type="varchar" MaxLength="250" />
+    <Property Name="Is_AttachmentApproved" Type="bit" />
+    <Property Name="FinalAcceptanceBy" Type="varchar(max)" />
+    <Property Name="AcceptRemarks" Type="varchar(max)" />
+    <Property Name="DateAccepted" Type="date" />
+    <Property Name="IsCompleted" Type="bit" />
+    <Property Name="Completion_Date" Type="datetime" />
+    <Property Name="Repairedby" Type="varchar(max)" />
+    <Property Name="IsCancelled" Type="bit" />
+    <Property Name="IsRejected" Type="bit" />
+    <Property Name="RejectRemarks" Type="varchar(max)" />
+    <Property Name="IsHold" Type="bit" />
+    <Property Name="HoldBy" Type="varchar(max)" />
+    <Property Name="HoldRemarks" Type="nvarchar" MaxLength="900" />
+    <Property Name="CompletionRemarks" Type="varchar(max)" />
+    <Property Name="IsSentToApprover_First" Type="bit" />
+    <Property Name="IsSentToApprover_Second" Type="bit" />
+    <Property Name="SecondSendDate" Type="datetime" />
+    <Property Name="IsSentToApprover_Third" Type="bit" />
+    <Property Name="ThirdSendDate" Type="datetime" />
+    <Property Name="CreationDateTime" Type="datetime" />
+    <Property Name="SampleCounter" Type="int" />
+    <Property Name="RequestorsRemarks" Type="nvarchar" MaxLength="600" />
+  </EntityType>
+  <EntityType Name="tblRequestType">
+    <Key>
+      <PropertyRef Name="RequestTypeCode" />
+    </Key>
+    <Property Name="RequestTypeCode" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="Request_Type" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRequestType_Selected">
+    <Key>
+      <PropertyRef Name="reqrtype_selid" />
+    </Key>
+    <Property Name="reqrtype_selid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestTypeCode" Type="nchar" MaxLength="2" />
+    <Property Name="JR_Code" Type="nvarchar" MaxLength="350" />
+  </EntityType>
+  <EntityType Name="tblSignatories">
+    <Key>
+      <PropertyRef Name="signid" />
+    </Key>
+    <Property Name="signid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestedBy" Type="varchar(max)" />
+    <Property Name="Req_Remarks" Type="varchar(max)" />
+    <Property Name="DateRequested" Type="date" />
+    <Property Name="Checker" Type="varchar(max)" />
+    <Property Name="CheckerRemarks" Type="varchar(max)" />
+    <Property Name="DateChecked" Type="date" />
+    <Property Name="AssessedBy" Type="varchar(max)" />
+    <Property Name="AssessedRemarks" Type="varchar(max)" />
+    <Property Name="DateAssessed" Type="date" />
+    <Property Name="Noter" Type="varchar(max)" />
+    <Property Name="NoterRemarks" Type="varchar(max)" />
+    <Property Name="DateNoted" Type="date" />
+    <Property Name="Manager" Type="varchar(max)" />
+    <Property Name="ManagerRemarks" Type="varchar(max)" />
+    <Property Name="DateApproved" Type="date" />
+    <Property Name="FinalAcceptanceBy" Type="varchar(max)" />
+    <Property Name="AcceptRemarks" Type="varchar(max)" />
+    <Property Name="DateAccepted" Type="date" />
+    <Property Name="JR_Code" Type="nvarchar" MaxLength="350" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUniqueCodes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jr_code" Type="nvarchar" MaxLength="350" />
+    <Property Name="isused" Type="bit" />
+    <Property Name="creationdatetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="UserRole" Type="varchar(max)" />
+    <Property Name="EmailAdd" Type="varchar(max)" />
+    <Property Name="EmailAddsss" Type="varchar(max)" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GenerateJRFNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inchargeid" Type="char" Mode="In" />
+  </Function>
+  <Function Name="GetAllApprovers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetApprover" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="incharge_id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="GetApproverByEmpID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+    <Parameter Name="incharge_id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="GetManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetManagerForIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetManagerForSafety" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetManagerForSmart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetSV_HeadBySubordinate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="empid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetVicePresident" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar(max)" Mode="In" />
+    <Parameter Name="userpass" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="VerifyIfEmployeeIsAvailable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmpID" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="JobRequestDBModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblApprovers" EntityType="Self.tblApprovers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssessment" EntityType="Self.tblAssessment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAttachment" EntityType="Self.tblAttachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEmailLogs" EntityType="Self.tblEmailLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIncharge" EntityType="Self.tblIncharge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblInchargePerson" EntityType="Self.tblInchargePerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblJigType" EntityType="Self.tblJigType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLeaderSubordinates" EntityType="Self.tblLeaderSubordinates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRequest" EntityType="Self.tblRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRequestType" EntityType="Self.tblRequestType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRequestType_Selected" EntityType="Self.tblRequestType_Selected" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSignatories" EntityType="Self.tblSignatories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUniqueCodes" EntityType="Self.tblUniqueCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

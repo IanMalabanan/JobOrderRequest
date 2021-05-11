@@ -1,0 +1,5 @@
+C:\Users\ian.malabanan\Desktop\ISOAP\Online_Reports\ClsCommon\bin\Release\ClsCommon.dll
+C:\Users\ian.malabanan\Desktop\ISOAP\Online_Reports\ClsCommon\bin\Release\ClsCommon.pdb
+C:\Users\ian.malabanan\Desktop\ISOAP\Online_Reports\ClsCommon\obj\Release\ClsCommon.dll
+C:\Users\ian.malabanan\Desktop\ISOAP\Online_Reports\ClsCommon\obj\Release\ClsCommon.pdb
+C:\Users\ian.malabanan\Desktop\ISOAP\Online_Reports\ClsCommon\obj\Release\ClsCommon.csprojResolveAssemblyReference.cache

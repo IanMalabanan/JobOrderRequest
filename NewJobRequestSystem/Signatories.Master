@@ -1,0 +1,457 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Signatories.master.cs" Inherits="NewJobRequestSystem.Signatories" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+
+    <meta http-equiv="Content-Language" content="en" />
+
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+
+    <meta name="theme-color" content="#4188c9" />
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <meta name="HandheldFriendly" content="True" />
+
+    <meta name="MobileOptimized" content="320" />
+
+    <link rel="icon" href="../images/sohbiicon.ico" type="image/x-icon" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="Resources/sohbiicon.ico" />
+
+    <link rel="stylesheet" href="../Bootstrap/Pages/assets/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="../Bootstrap/Pages/assets/css/css.css" />
+
+    <link href="../Bootstrap/mycss.css" rel="stylesheet" />
+
+    <%--<link rel="shortcut icon" href="../images/sohbiicon.ico" />--%>
+
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext" />--%>
+
+    <script src="../Bootstrap/Pages/assets/js/require.min.js"></script>
+
+    <script>
+        requirejs.config({
+            baseUrl: '.'
+        });
+    </script>
+
+    <!-- Dashboard Core -->
+    <link href="../Bootstrap/Pages/assets/css/dashboard.css" rel="stylesheet" />
+
+    <script src="../Bootstrap/Pages/assets/js/dashboard.js"></script>
+
+    <!-- c3.js Charts Plugin -->
+    <link href="../Bootstrap/Pages/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+
+    <script src="../Bootstrap/Pages/assets/plugins/charts-c3/plugin.js"></script>
+
+    <!-- Google Maps Plugin -->
+    <link href="../Bootstrap/Pages/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+
+    <script src="../Bootstrap/Pages/assets/plugins/maps-google/plugin.js"></script>
+
+    <!-- Input Mask Plugin -->
+    <script src="../Bootstrap/Pages/assets/plugins/input-mask/plugin.js"></script>
+
+
+    <script type="text/javascript">
+
+        $('#modalReject').on('hidden.bs.modal', function () {
+            $('.modal-body').find('label,input,textarea').val('');
+
+        });
+
+    </script>
+
+
+    <style>
+        .newfont {
+            font-variant: small-caps;
+            font-weight: bold;
+            letter-spacing: 2.1px;
+        }
+
+        /** Columns */
+        .rcbHeader ul,
+        .rcbFooter ul,
+        .rcbItem ul,
+        .rcbHovered ul,
+        .rcbDisabled ul {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: inline-block;
+            list-style-type: none;
+        }
+
+        .exampleRadComboBox.RadComboBoxDropDown .rcbHeader {
+            padding: 5px 27px 4px 7px;
+        }
+
+        .rcbScroll {
+            overflow: scroll !important;
+            overflow-x: hidden !important;
+        }
+
+        .col2 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 70%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col2_3 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 60%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col2_2 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 35%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col3 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 35%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col1 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 30%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .col1_2 {
+            margin: 0;
+            padding: 0 5px 0 0;
+            width: 40%;
+            line-height: 14px;
+            float: left;
+        }
+
+        .example-modal .modal {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        .example-modal .modal {
+            background: transparent !important;
+        }
+
+        @media (min-width: 992px) {
+            .steps {
+                padding: 0px;
+                background: transparent;
+                list-style: none;
+                overflow: hidden;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border-radius: 4px;
+                display: table-row;
+            }
+
+                .steps > li {
+                    display: table-cell;
+                    vertical-align: middle;
+                    width: 1%;
+                    height: 0;
+                }
+
+                    .steps > li + li:before {
+                        padding: 0;
+                        content: "";
+                    }
+
+                .steps li a {
+                    color: white;
+                    text-decoration: none;
+                    padding: 10px 0 10px 35px;
+                    position: relative;
+                    display: inline-block;
+                    width: calc(100% - 10px);
+                    background-color: #999;
+                    text-align: center;
+                    height: 100%;
+                }
+
+                .steps li.completed a {
+                    /*background: #3c763d;*/
+                    background: #00a65a;
+                }
+
+                    .steps li.completed a:after {
+                        /*border-left: 30px solid #3c763d;*/
+                        border-left: 30px solid #00a65a;
+                    }
+
+                .steps li.active a {
+                    background: #3c8dbc;
+                }
+
+                    .steps li.active a:after {
+                        border-left: 30px solid #3c8dbc;
+                    }
+
+                .steps li.rejected_cancelled a {
+                    background: #dd4b39;
+                }
+
+                    .steps li.rejected_cancelled a:after {
+                        border-left: 30px solid #dd4b39;
+                    }
+
+                .steps li.pending a {
+                    background: #ffa500;
+                }
+
+                    .steps li.pending a:after {
+                        border-left: 30px solid #ffa500;
+                    }
+
+
+
+                .steps li:first-child a {
+                    padding-left: 15px;
+                }
+
+                .steps li:last-of-type a {
+                    width: calc(100% - 38px);
+                }
+
+                .steps li a:before {
+                    content: " ";
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    border-top: 50px solid transparent; /* height not equal parent */
+                    border-bottom: 50px solid transparent; /* height not equal parent */
+                    border-left: 30px solid white;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -50px; /* height not equal parent */
+                    margin-left: 1px;
+                    left: 100%;
+                    z-index: 1;
+                }
+
+                .steps li a:after {
+                    content: " ";
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    border-top: 50px solid transparent; /* height not equal parent */
+                    border-bottom: 50px solid transparent; /* height not equal parent */
+                    border-left: 30px solid #999;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -50px; /* height not equal parent */
+                    left: 100%;
+                    z-index: 2;
+                }
+        }
+
+        @media (max-width: 991px) {
+            .steps {
+                padding: 8px 15px;
+                margin-bottom: 20px;
+                list-style: none;
+                background-color: #f5f5f5;
+                border-radius: 4px;
+                overflow: auto;
+            }
+
+                .steps > li {
+                    display: block;
+                }
+
+                .steps li a {
+                    color: #777;
+                }
+
+                .steps > li:before {
+                    padding: 0 5px;
+                    color: #ccc;
+                    content: "\e080";
+                    font-family: 'Glyphicons Halflings';
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 1;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+
+                .steps li.completed:before {
+                    content: "\e013";
+                    color: #3c763d;
+                    font-family: 'Glyphicons Halflings';
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 1;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+
+                .steps li.completed a {
+                    color: inherit;
+                }
+
+                .steps li.active:before {
+                    color: #8a6d3b;
+                }
+
+                .steps > .active {
+                    color: #999;
+                }
+
+                .steps li:first-child a {
+                    padding-left: inherit;
+                }
+
+                .steps li:last-of-type a {
+                    width: inherit;
+                }
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="false">
+
+            <TargetControls>
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadGrid" />
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadNotification" />
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadComboBox" />
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadTabStrip" />
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadDatePicker" />
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadListBox" />
+
+                <telerik:TargetControl Skin="WebBlue" ControlsToApplySkin="RadWindow" />
+
+            </TargetControls>
+
+        </telerik:RadSkinManager>
+
+        <div class="page">
+
+            <div class="page-main">
+
+                <div class="header fixed-top py-4">
+
+                    <div class="container" style="max-width: 98%">
+
+                        <div class="d-flex">
+
+                            <a class="header-brand" runat="server">
+                                <img src="images/skpilogopic.png" class="header-brand-img" alt="tabler logo" />
+                                ONLINE JOB ORDER SYSTEM                         
+                            </a>
+
+
+                            <div class="d-flex order-lg-2 ml-auto">
+                                <div class="dropdown">
+                                    <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown" style="cursor: default;">
+                                        <span class="avatar" style="background-image: url(images/userprofile.png); background-color: white"></span>
+                                        <span class="ml-2 d-none d-lg-block">
+                                            <span class="text-default" runat="server" id="lblUser">User</span>
+                                            <small class="text-muted d-block mt-1" runat="server" id="lblPosition">Position</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                                <span class="header-toggler-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="my-3 my-md-5">
+
+                    <div class="container" runat="server" visible="true" style="max-width: 100%; margin-top: 70px; margin-bottom: 70px">
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+
+                </div>
+
+                <footer class="footer fixed-bottom">
+                    <div class="container" style="max-width: 98%;">
+                        <div class="row align-items-center flex-row-reverse">
+                            <div class="col-auto ml-lg-auto">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        All rights reserved
+                                    </div>
+                                    <div class="col-auto">
+                                        <%--<a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</a>--%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                                Copyright © 2020 Sohbi Kohgei (Phils.), Inc.
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+</body>
+</html>

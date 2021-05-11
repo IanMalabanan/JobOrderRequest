@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HRISModelStoreContainer" CdmEntityContainer="HRISEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HRISModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_City">
+      <EntityTypeMapping TypeName="HRISModel.t_City">
+        <MappingFragment StoreEntitySet="t_City">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="ProvID" ColumnName="ProvID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_CivilStatus">
+      <EntityTypeMapping TypeName="HRISModel.t_CivilStatus">
+        <MappingFragment StoreEntitySet="t_CivilStatus">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_COEBodyTemplate">
+      <EntityTypeMapping TypeName="HRISModel.t_COEBodyTemplate">
+        <MappingFragment StoreEntitySet="t_COEBodyTemplate">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="COEBodyTemplate" ColumnName="COEBodyTemplate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Country">
+      <EntityTypeMapping TypeName="HRISModel.t_Country">
+        <MappingFragment StoreEntitySet="t_Country">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Department">
+      <EntityTypeMapping TypeName="HRISModel.t_Department">
+        <MappingFragment StoreEntitySet="t_Department">
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+          <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_DepartmentalSection">
+      <EntityTypeMapping TypeName="HRISModel.t_DepartmentalSection">
+        <MappingFragment StoreEntitySet="t_DepartmentalSection">
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+          <ScalarProperty Name="SectCode" ColumnName="SectCode" />
+          <ScalarProperty Name="SectName" ColumnName="SectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_DependentRelation">
+      <EntityTypeMapping TypeName="HRISModel.t_DependentRelation">
+        <MappingFragment StoreEntitySet="t_DependentRelation">
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EducationalAttainment">
+      <EntityTypeMapping TypeName="HRISModel.t_EducationalAttainment">
+        <MappingFragment StoreEntitySet="t_EducationalAttainment">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpAddress">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpAddress">
+        <MappingFragment StoreEntitySet="t_EmpAddress">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="PresStreet" ColumnName="PresStreet" />
+          <ScalarProperty Name="PresCityID" ColumnName="PresCityID" />
+          <ScalarProperty Name="PresProvinceID" ColumnName="PresProvinceID" />
+          <ScalarProperty Name="PresCountryID" ColumnName="PresCountryID" />
+          <ScalarProperty Name="PermStreet" ColumnName="PermStreet" />
+          <ScalarProperty Name="PermCityID" ColumnName="PermCityID" />
+          <ScalarProperty Name="PermProvinceID" ColumnName="PermProvinceID" />
+          <ScalarProperty Name="PermCountryID" ColumnName="PermCountryID" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpDependents">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpDependents">
+        <MappingFragment StoreEntitySet="t_EmpDependents">
+          <ScalarProperty Name="DependentID" ColumnName="DependentID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="MaidenName" ColumnName="MaidenName" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpEducationalBackground">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpEducationalBackground">
+        <MappingFragment StoreEntitySet="t_EmpEducationalBackground">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="ElementarySchool" ColumnName="ElementarySchool" />
+          <ScalarProperty Name="ElementaryAddress" ColumnName="ElementaryAddress" />
+          <ScalarProperty Name="ElementaryYear" ColumnName="ElementaryYear" />
+          <ScalarProperty Name="SecondarySchool" ColumnName="SecondarySchool" />
+          <ScalarProperty Name="SecondaryAddress" ColumnName="SecondaryAddress" />
+          <ScalarProperty Name="SecondaryYear" ColumnName="SecondaryYear" />
+          <ScalarProperty Name="TertiarySchool" ColumnName="TertiarySchool" />
+          <ScalarProperty Name="TertiaryAddress" ColumnName="TertiaryAddress" />
+          <ScalarProperty Name="TertiaryYear" ColumnName="TertiaryYear" />
+          <ScalarProperty Name="TertiaryCourse" ColumnName="TertiaryCourse" />
+          <ScalarProperty Name="VocationalSchool" ColumnName="VocationalSchool" />
+          <ScalarProperty Name="VocationalAddress" ColumnName="VocationalAddress" />
+          <ScalarProperty Name="VocationalYear" ColumnName="VocationalYear" />
+          <ScalarProperty Name="VocationalCourse" ColumnName="VocationalCourse" />
+          <ScalarProperty Name="PostGraduateSchool" ColumnName="PostGraduateSchool" />
+          <ScalarProperty Name="PostGraduateAddress" ColumnName="PostGraduateAddress" />
+          <ScalarProperty Name="PostGraduateYear" ColumnName="PostGraduateYear" />
+          <ScalarProperty Name="PostGraduateCourse" ColumnName="PostGraduateCourse" />
+          <ScalarProperty Name="IsLicensed" ColumnName="IsLicensed" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpMaster">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpMaster">
+        <MappingFragment StoreEntitySet="t_EmpMaster">
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="ProximityCardID" ColumnName="ProximityCardID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EmploymentStatus" ColumnName="EmploymentStatus" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="CivilStatus" ColumnName="CivilStatus" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="SSSno" ColumnName="SSSno" />
+          <ScalarProperty Name="PHno" ColumnName="PHno" />
+          <ScalarProperty Name="PagIbigNo" ColumnName="PagIbigNo" />
+          <ScalarProperty Name="TIN" ColumnName="TIN" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="HeightUnit" ColumnName="HeightUnit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="HighestEducationalAttainment" ColumnName="HighestEducationalAttainment" />
+          <ScalarProperty Name="IDissued" ColumnName="IDissued" />
+          <ScalarProperty Name="AppointmentPaperIssued" ColumnName="AppointmentPaperIssued" />
+          <ScalarProperty Name="NoOfDependents" ColumnName="NoOfDependents" />
+          <ScalarProperty Name="ShuttleDestination" ColumnName="ShuttleDestination" />
+          <ScalarProperty Name="LoaforManagerApproval" ColumnName="LoaforManagerApproval" />
+          <ScalarProperty Name="InitialEntryBy" ColumnName="InitialEntryBy" />
+          <ScalarProperty Name="InitialEntryDate" ColumnName="InitialEntryDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="firstevaluation" ColumnName="firstevaluation" />
+          <ScalarProperty Name="secondevaluation" ColumnName="secondevaluation" />
+          <ScalarProperty Name="thirdevaluation" ColumnName="thirdevaluation" />
+          <ScalarProperty Name="LOAforHRmanagerApproval" ColumnName="LOAforHRmanagerApproval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpPrintID">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpPrintID">
+        <MappingFragment StoreEntitySet="t_EmpPrintID">
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="SSSno" ColumnName="SSSno" />
+          <ScalarProperty Name="TIN" ColumnName="TIN" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpReClassification">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpReClassification">
+        <MappingFragment StoreEntitySet="t_EmpReClassification">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="ReClassificationMode" ColumnName="ReClassificationMode" />
+          <ScalarProperty Name="FromPosition" ColumnName="FromPosition" />
+          <ScalarProperty Name="ToPosition" ColumnName="ToPosition" />
+          <ScalarProperty Name="EffectiveDatePosition" ColumnName="EffectiveDatePosition" />
+          <ScalarProperty Name="FromGradeLevel" ColumnName="FromGradeLevel" />
+          <ScalarProperty Name="ToGradeLevel" ColumnName="ToGradeLevel" />
+          <ScalarProperty Name="EffectiveDateGradeLevel" ColumnName="EffectiveDateGradeLevel" />
+          <ScalarProperty Name="FromEmploymentStatus" ColumnName="FromEmploymentStatus" />
+          <ScalarProperty Name="ToEmploymentStatus" ColumnName="ToEmploymentStatus" />
+          <ScalarProperty Name="EffectiveDateEmploymentStatus" ColumnName="EffectiveDateEmploymentStatus" />
+          <ScalarProperty Name="FromDepartment" ColumnName="FromDepartment" />
+          <ScalarProperty Name="ToDepartment" ColumnName="ToDepartment" />
+          <ScalarProperty Name="EffectiveDateDepartment" ColumnName="EffectiveDateDepartment" />
+          <ScalarProperty Name="FromSection" ColumnName="FromSection" />
+          <ScalarProperty Name="ToSection" ColumnName="ToSection" />
+          <ScalarProperty Name="EffectiveDateSection" ColumnName="EffectiveDateSection" />
+          <ScalarProperty Name="FromBasicRate" ColumnName="FromBasicRate" />
+          <ScalarProperty Name="ToBasicRate" ColumnName="ToBasicRate" />
+          <ScalarProperty Name="EffectiveDateBasicRate" ColumnName="EffectiveDateBasicRate" />
+          <ScalarProperty Name="FromPayMode" ColumnName="FromPayMode" />
+          <ScalarProperty Name="ToPayMode" ColumnName="ToPayMode" />
+          <ScalarProperty Name="EffectiveDatePayMode" ColumnName="EffectiveDatePayMode" />
+          <ScalarProperty Name="FromMealAllowance" ColumnName="FromMealAllowance" />
+          <ScalarProperty Name="ToMealAllowance" ColumnName="ToMealAllowance" />
+          <ScalarProperty Name="EffectiveDateMealAllowance" ColumnName="EffectiveDateMealAllowance" />
+          <ScalarProperty Name="FromRelativityPay" ColumnName="FromRelativityPay" />
+          <ScalarProperty Name="ToRelativityPay" ColumnName="ToRelativityPay" />
+          <ScalarProperty Name="EffectiveDateRelativityPay" ColumnName="EffectiveDateRelativityPay" />
+          <ScalarProperty Name="FromOtherAllowance" ColumnName="FromOtherAllowance" />
+          <ScalarProperty Name="ToOtherAllowance" ColumnName="ToOtherAllowance" />
+          <ScalarProperty Name="EffectiveDateOtherAllowance" ColumnName="EffectiveDateOtherAllowance" />
+          <ScalarProperty Name="FromAccidentInsurance" ColumnName="FromAccidentInsurance" />
+          <ScalarProperty Name="ToAccidentInsurance" ColumnName="ToAccidentInsurance" />
+          <ScalarProperty Name="EffectiveDateAccidentInsurance" ColumnName="EffectiveDateAccidentInsurance" />
+          <ScalarProperty Name="FromResponsibilityPay" ColumnName="FromResponsibilityPay" />
+          <ScalarProperty Name="ToResponsibilityPay" ColumnName="ToResponsibilityPay" />
+          <ScalarProperty Name="EffectiveDateResponsibilityPay" ColumnName="EffectiveDateResponsibilityPay" />
+          <ScalarProperty Name="FromTrainersAllowance" ColumnName="FromTrainersAllowance" />
+          <ScalarProperty Name="ToTrainersAllowance" ColumnName="ToTrainersAllowance" />
+          <ScalarProperty Name="EffectiveDateTrainersAllowance" ColumnName="EffectiveDateTrainersAllowance" />
+          <ScalarProperty Name="FromOtherAllowanceDesc" ColumnName="FromOtherAllowanceDesc" />
+          <ScalarProperty Name="ToOtherAllowanceDesc" ColumnName="ToOtherAllowanceDesc" />
+          <ScalarProperty Name="FromCTPA" ColumnName="FromCTPA" />
+          <ScalarProperty Name="ToCTPA" ColumnName="ToCTPA" />
+          <ScalarProperty Name="EffectiveDateCTPA" ColumnName="EffectiveDateCTPA" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="NotedBy" ColumnName="NotedBy" />
+          <ScalarProperty Name="PreparedBy" ColumnName="PreparedBy" />
+          <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpStatus">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpStatus">
+        <MappingFragment StoreEntitySet="t_EmpStatus">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpTrainingsSeminars">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpTrainingsSeminars">
+        <MappingFragment StoreEntitySet="t_EmpTrainingsSeminars">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="ConductedBy" ColumnName="ConductedBy" />
+          <ScalarProperty Name="TrainingVenue" ColumnName="TrainingVenue" />
+          <ScalarProperty Name="TrainingName" ColumnName="TrainingName" />
+          <ScalarProperty Name="TrainingFrom" ColumnName="TrainingFrom" />
+          <ScalarProperty Name="TrainingTo" ColumnName="TrainingTo" />
+          <ScalarProperty Name="Trainor" ColumnName="Trainor" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmpWorkExperience">
+      <EntityTypeMapping TypeName="HRISModel.t_EmpWorkExperience">
+        <MappingFragment StoreEntitySet="t_EmpWorkExperience">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_HeightUnit">
+      <EntityTypeMapping TypeName="HRISModel.t_HeightUnit">
+        <MappingFragment StoreEntitySet="t_HeightUnit">
+          <ScalarProperty Name="HeightUnit" ColumnName="HeightUnit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Nationality">
+      <EntityTypeMapping TypeName="HRISModel.t_Nationality">
+        <MappingFragment StoreEntitySet="t_Nationality">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_PayMode">
+      <EntityTypeMapping TypeName="HRISModel.t_PayMode">
+        <MappingFragment StoreEntitySet="t_PayMode">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Position">
+      <EntityTypeMapping TypeName="HRISModel.t_Position">
+        <MappingFragment StoreEntitySet="t_Position">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Province">
+      <EntityTypeMapping TypeName="HRISModel.t_Province">
+        <MappingFragment StoreEntitySet="t_Province">
+          <ScalarProperty Name="ProvID" ColumnName="ProvID" />
+          <ScalarProperty Name="ProvName" ColumnName="ProvName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Religion">
+      <EntityTypeMapping TypeName="HRISModel.t_Religion">
+        <MappingFragment StoreEntitySet="t_Religion">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Sex">
+      <EntityTypeMapping TypeName="HRISModel.t_Sex">
+        <MappingFragment StoreEntitySet="t_Sex">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_ShuttleDestination">
+      <EntityTypeMapping TypeName="HRISModel.t_ShuttleDestination">
+        <MappingFragment StoreEntitySet="t_ShuttleDestination">
+          <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_TempEmpDependents">
+      <EntityTypeMapping TypeName="HRISModel.t_TempEmpDependents">
+        <MappingFragment StoreEntitySet="t_TempEmpDependents">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="MaidenName" ColumnName="MaidenName" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_TempEmpWorkExp">
+      <EntityTypeMapping TypeName="HRISModel.t_TempEmpWorkExp">
+        <MappingFragment StoreEntitySet="t_TempEmpWorkExp">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Users">
+      <EntityTypeMapping TypeName="HRISModel.t_Users">
+        <MappingFragment StoreEntitySet="t_Users">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userpass" ColumnName="userpass" />
+          <ScalarProperty Name="usertype" ColumnName="usertype" />
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_UserType">
+      <EntityTypeMapping TypeName="HRISModel.t_UserType">
+        <MappingFragment StoreEntitySet="t_UserType">
+          <ScalarProperty Name="usertype" ColumnName="usertype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_WeightUnit">
+      <EntityTypeMapping TypeName="HRISModel.t_WeightUnit">
+        <MappingFragment StoreEntitySet="t_WeightUnit">
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSystemFiles">
+      <EntityTypeMapping TypeName="HRISModel.tblSystemFile">
+        <MappingFragment StoreEntitySet="tblSystemFiles">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="SourceUpdateFolder" ColumnName="SourceUpdateFolder" />
+          <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSystemVersions">
+      <EntityTypeMapping TypeName="HRISModel.tblSystemVersion">
+        <MappingFragment StoreEntitySet="tblSystemVersion">
+          <ScalarProperty Name="SystemVersion" ColumnName="SystemVersion" />
+          <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_COETemplateForPrinting">
+      <EntityTypeMapping TypeName="HRISModel.t_COETemplateForPrinting">
+        <MappingFragment StoreEntitySet="t_COETemplateForPrinting">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COEBody" ColumnName="COEBody" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_COEType">
+      <EntityTypeMapping TypeName="HRISModel.t_COEType">
+        <MappingFragment StoreEntitySet="t_COEType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COEType" ColumnName="COEType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EmployeeFingerData">
+      <EntityTypeMapping TypeName="HRISModel.t_EmployeeFingerData">
+        <MappingFragment StoreEntitySet="t_EmployeeFingerData">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FingerData" ColumnName="FingerData" />
+          <ScalarProperty Name="FingerType" ColumnName="FingerType" />
+          <ScalarProperty Name="Arm" ColumnName="Arm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DCS_GetAdministratorByID" FunctionName="HRISModel.Store.DCS_GetAdministratorByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.DCS_GetAdministratorByID_Result">
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DCS_GetAdministratorByName" FunctionName="HRISModel.Store.DCS_GetAdministratorByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.DCS_GetAdministratorByName_Result">
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DCS_GetAffectedDepartments" FunctionName="HRISModel.Store.DCS_GetAffectedDepartments" />
+    <FunctionImportMapping FunctionImportName="DCS_GetAllAdministrators" FunctionName="HRISModel.Store.DCS_GetAllAdministrators">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.DCS_GetAllAdministrators_Result">
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DCS_GetAllApprovers_Users" FunctionName="HRISModel.Store.DCS_GetAllApprovers_Users">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.DCS_GetAllApprovers_Users_Result">
+          <ScalarProperty Name="approverid" ColumnName="approverid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="reporttype" ColumnName="reporttype" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DCS_GetAllApprovers_UsersByName" FunctionName="HRISModel.Store.DCS_GetAllApprovers_UsersByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.DCS_GetAllApprovers_UsersByName_Result">
+          <ScalarProperty Name="approverid" ColumnName="approverid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userpass" ColumnName="userpass" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="reporttype" ColumnName="reporttype" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DisplayCOE" FunctionName="HRISModel.Store.DisplayCOE" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetAllEmployeesByDepartment" FunctionName="HRISModel.Store.EPLS_GetAllEmployeesByDepartment" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetLeaderBySubordinate" FunctionName="HRISModel.Store.EPLS_GetLeaderBySubordinate" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetManager" FunctionName="HRISModel.Store.EPLS_GetManager" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetSubordinates" FunctionName="HRISModel.Store.EPLS_GetSubordinates" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetSubordinatesByEmpID" FunctionName="HRISModel.Store.EPLS_GetSubordinatesByEmpID" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetSubordinatesForPersonalObjective" FunctionName="HRISModel.Store.EPLS_GetSubordinatesForPersonalObjective" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetSV_HeadBySubordinate" FunctionName="HRISModel.Store.EPLS_GetSV_HeadBySubordinate" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetSV_Manager" FunctionName="HRISModel.Store.EPLS_GetSV_Manager" />
+    <FunctionImportMapping FunctionImportName="EPLS_GetSV_ManagerForRegistration" FunctionName="HRISModel.Store.EPLS_GetSV_ManagerForRegistration" />
+    <FunctionImportMapping FunctionImportName="GetAllDepartment" FunctionName="HRISModel.Store.GetAllDepartment" />
+    <FunctionImportMapping FunctionImportName="GetAllManager" FunctionName="HRISModel.Store.GetAllManager" />
+    <FunctionImportMapping FunctionImportName="GetSelectedEmpforPrintID" FunctionName="HRISModel.Store.GetSelectedEmpforPrintID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.GetSelectedEmpforPrintID_Result">
+          <ScalarProperty Name="EmpBarcode" ColumnName="EmpBarcode" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="SSSno" ColumnName="SSSno" />
+          <ScalarProperty Name="TIN" ColumnName="TIN" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PIS_UpdateMasterData" FunctionName="HRISModel.Store.PIS_UpdateMasterData" />
+    <FunctionImportMapping FunctionImportName="SKPI_GetAllEmployees" FunctionName="HRISModel.Store.SKPI_GetAllEmployees">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.SKPI_GetAllEmployees_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="EStat" ColumnName="EStat" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SKPI_GetAllEmployeesByDepartment" FunctionName="HRISModel.Store.SKPI_GetAllEmployeesByDepartment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.SKPI_GetAllEmployeesByDepartment_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="EStat" ColumnName="EStat" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SKPI_GetAllEmployeesByDepartmentandSection" FunctionName="HRISModel.Store.SKPI_GetAllEmployeesByDepartmentandSection">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.SKPI_GetAllEmployeesByDepartmentandSection_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sec_Desc" ColumnName="Sec_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="EStat" ColumnName="EStat" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SKPI_GetAllEmployeesByEmpID" FunctionName="HRISModel.Store.SKPI_GetAllEmployeesByEmpID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.SKPI_GetAllEmployeesByEmpID_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="EStat" ColumnName="EStat" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+          <ScalarProperty Name="HRISPic" ColumnName="HRISPic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SKPI_GetAllEmployeesByName" FunctionName="HRISModel.Store.SKPI_GetAllEmployeesByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.SKPI_GetAllEmployeesByName_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="SectCode" ColumnName="SectCode" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="EStat" ColumnName="EStat" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmpPicture" ColumnName="EmpPicture" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SKPI_GetDCApprovers_Users" FunctionName="HRISModel.Store.SKPI_GetDCApprovers_Users">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.SKPI_GetDCApprovers_Users_Result">
+          <ScalarProperty Name="approverid" ColumnName="approverid" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="reporttype" ColumnName="reporttype" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SKPI_GetEmpLoginByID" FunctionName="HRISModel.Store.SKPI_GetEmpLoginByID" />
+    <FunctionImportMapping FunctionImportName="SKPI_GetSection" FunctionName="HRISModel.Store.SKPI_GetSection" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="HRISModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="HRISModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="HRISModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="HRISModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="HRISModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRISModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="HRISModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="HRISModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

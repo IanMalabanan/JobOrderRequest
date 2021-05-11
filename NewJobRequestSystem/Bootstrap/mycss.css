@@ -1,0 +1,427 @@
+﻿.docconlabels {
+    font-size: 18px;
+    word-wrap: break-word;
+}
+
+.docconlabels2 {
+    font-size: 12px;
+    word-wrap: break-word;
+}
+
+.docontb {
+    font-size: 14px;
+    height: 30px;
+    text-align: left;
+    font-weight: 100;
+}
+
+.doconbtn {
+    font-size: 12px;
+    height: 30px;
+}
+
+.block {
+    height: 20vh;
+    width: 98%;
+    border: 0px solid lightgrey;
+    overflow-y: scroll;
+}
+
+
+.bg {
+    background-image: url("/mdm-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.block2 {
+    height: 20vh;
+    width: 98%;
+    border: 1px solid lightgrey;
+    overflow-y: scroll;
+    margin-left: 1%;
+}
+
+.rdolistbtn label {
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.rdolistbtnOBJ label {
+    margin-left: 10px;
+    margin-right: 40px;
+    font-size: 20px;
+}
+
+
+.aligncenter {
+    text-align: center;
+    
+}
+
+.alignjustify {
+    text-align: justify;
+}
+
+.alignleft {
+    text-align: left;
+}
+
+.alignright {
+    text-align: right;
+}
+
+.modalBackground {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0%;
+    top: 0%;
+    width: 100%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content2 {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 600px;
+}
+
+.modal-bodyimg {
+    padding: 20px 20px 20px 20px;
+    width: auto;
+}
+
+
+
+
+.modalDocuments{
+    position: relative;
+    
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 70%;
+    
+}
+
+.modal-contentEmployees {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 30%;
+    
+}
+
+.modal-headerDocuments {
+    padding: 1px 20px;
+    background-color: #3c8dbc;
+    color: white;
+}
+
+.modal-bodyDocuments {
+    padding: 20px 20px 20px 20px;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modalBackgroundEmployees {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0%;
+    top: 0%;
+    width: 100%; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5);
+    height:300px;
+}
+
+.modalPopupEmployees {
+    background-color: #FFFFFF;
+}
+
+.modal-contentEmployees {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 30%;
+    
+}
+
+
+.modal-headerEmployees {
+    padding: 1px 20px;
+    background-color: #3c8dbc;
+    color: white;
+}
+
+.modal-bodyEmployees {
+    padding: 20px 20px 20px 20px;
+    width: auto;
+}
+
+.modal-footerEmployees {
+    padding: 2px 16px;
+    background-color: #3c8dbc;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    margin-top: 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+    .bs-callout h5 {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .bs-callout p:last-child {
+        margin-bottom: 0;
+    }
+
+    .bs-callout code {
+        border-radius: 3px;
+    }
+
+    .bs-callout + .bs-callout {
+        margin-top: 0px;
+    }
+
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+
+    .bs-callout-info h5 {
+        /*color: #5bc0de;*/
+        color: #000000;
+    }
+
+.headers {
+    color: white;
+    text-align: center;
+    font-size: 19px;
+    padding: 5px;
+    background-color: #3c8dbc;
+    border:none;
+}
+
+.items {
+    text-align: left;
+    font-size: 15px;
+    word-wrap: break-word;
+    padding: 5px;
+}
+
+.items2 {
+    text-align: center;
+    font-size: 15px;
+    word-wrap: break-word;
+    padding: 5px;
+}
+
+.gridview {
+    background-color: #fff;
+    padding: 50%;
+    font-weight: 900;
+    margin: 50%;
+    height: 30px;
+}
+
+    .gridview a {
+        margin: auto 20%;
+        border-radius: 50%;
+        padding: 5px 10px 5px 10px;
+        color: black;
+        text-decoration: none;
+    }
+
+    .gridview span {
+        color: #3c8dbc;
+        border-radius: 50%;
+        padding: 5px 10px 5px 10px;
+    }
+
+
+
+
+.track-progress {
+    margin: 0px;
+    padding: 10px 10px 0 10px;
+    background: white;
+    height: 80px;
+    border-radius: 10px;
+}
+
+    .track-progress li {
+        list-style-type: none;
+        display: inline-block;
+        position: relative;
+        font: 14px/14px Helvetica, sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        color: #bbb;
+        border-bottom: 4px #bbb solid;
+        line-height: 3em;
+        width: 20%;
+        float: left;
+    }
+
+        .track-progress li:after {
+            content: "\00a0\00a0";
+            /*non-breaking space;*/
+        }
+
+        .track-progress li:before {
+            position: relative;
+            bottom: -2.5em;
+            float: left;
+            left: 50%;
+            line-height: 3em;
+        }
+
+@media (max-width: 800px) {
+    .track-progress li {
+        font-size: 0.7em;
+    }
+}
+
+.track-progress li span {
+    padding-left: 0.75em;
+}
+
+@media (max-width: 640px) {
+    .track-progress li span {
+        display: none;
+    }
+}
+
+.track-progress li.done {
+    color: black;
+    font-weight: bold;
+    border-bottom: 8px #3c8dbc solid;
+}
+
+    .track-progress li.done:before {
+        content: "";
+        color: white;
+        background: #3c8dbc;
+        /*background: #5cb85c;*/
+        height: 1.5em;
+        width: 1.5em;
+        line-height: 1em;
+        border: none;
+        border-radius: 1em;
+    }
+
+.track-progress li.todo:before {
+    content: "";
+    background: white;
+    border: 0.25em solid #bbb;
+    height: 1.3em;
+    width: 1.3em;
+    border-radius: 0.8em;
+}
+
+.progressPending{
+    background-color:#bbb;
+    color:black;
+}
+
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 30px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
+
+
+
+
+
+
+
+

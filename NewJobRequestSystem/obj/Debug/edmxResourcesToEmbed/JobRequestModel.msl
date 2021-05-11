@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JobRequestDBModelStoreContainer" CdmEntityContainer="JobRequestDBEntities">
+    <FunctionImportMapping FunctionImportName="GenerateJRFNo" FunctionName="JobRequestDBModel.Store.GenerateJRFNo" />
+    <FunctionImportMapping FunctionImportName="GetApprover" FunctionName="JobRequestDBModel.Store.GetApprover" />
+    <FunctionImportMapping FunctionImportName="GetApproverByEmpID" FunctionName="JobRequestDBModel.Store.GetApproverByEmpID" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="JobRequestDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="JobRequestDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="JobRequestDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="JobRequestDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="JobRequestDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="JobRequestDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="JobRequestDBModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="JobRequestDBModel.Store.UserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.UserLogin_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="empid" ColumnName="empid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userpass" ColumnName="userpass" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="accttype" ColumnName="accttype" />
+          <ScalarProperty Name="emailadd" ColumnName="emailadd" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetManager" FunctionName="JobRequestDBModel.Store.GetManager">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetManager_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSV_HeadBySubordinate" FunctionName="JobRequestDBModel.Store.GetSV_HeadBySubordinate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetSV_HeadBySubordinate_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetManagerForIT" FunctionName="JobRequestDBModel.Store.GetManagerForIT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetManagerForIT_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetManagerForSafety" FunctionName="JobRequestDBModel.Store.GetManagerForSafety">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetManagerForSafety_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetManagerForSmart" FunctionName="JobRequestDBModel.Store.GetManagerForSmart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetManagerForSmart_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetVicePresident" FunctionName="JobRequestDBModel.Store.GetVicePresident">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetVicePresident_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="FullName_FnameFirst" ColumnName="FullName_FnameFirst" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VerifyIfEmployeeIsAvailable" FunctionName="JobRequestDBModel.Store.VerifyIfEmployeeIsAvailable" />
+    <FunctionImportMapping FunctionImportName="GetAllApprovers" FunctionName="JobRequestDBModel.Store.GetAllApprovers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JobRequestDBModel.GetAllApprovers_Result">
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="SerialID" ColumnName="SerialID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+          <ScalarProperty Name="Sect_Code" ColumnName="Sect_Code" />
+          <ScalarProperty Name="Sect_Desc" ColumnName="Sect_Desc" />
+          <ScalarProperty Name="FullName_LnameFirst" ColumnName="FullName_LnameFirst" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Pos_Desc" ColumnName="Pos_Desc" />
+          <ScalarProperty Name="EStatCode" ColumnName="EStatCode" />
+          <ScalarProperty Name="EStat" ColumnName="EStat" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="JobRequestDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApprovers">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblApprover">
+        <MappingFragment StoreEntitySet="tblApprovers">
+          <ScalarProperty Name="OrderValue" ColumnName="OrderValue" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAssessments">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblAssessment">
+        <MappingFragment StoreEntitySet="tblAssessment">
+          <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+          <ScalarProperty Name="Assessment" ColumnName="Assessment" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAttachments">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblAttachment">
+        <MappingFragment StoreEntitySet="tblAttachment">
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="jr_code" ColumnName="jr_code" />
+          <ScalarProperty Name="IsApproverReviewed" ColumnName="IsApproverReviewed" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="IsCheckerReviewed" ColumnName="IsCheckerReviewed" />
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="CheckedBy" ColumnName="CheckedBy" />
+          <ScalarProperty Name="IsPrepared" ColumnName="IsPrepared" />
+          <ScalarProperty Name="PreparedBy" ColumnName="PreparedBy" />
+          <ScalarProperty Name="issubmitted" ColumnName="issubmitted" />
+          <ScalarProperty Name="typeofattachment" ColumnName="typeofattachment" />
+          <ScalarProperty Name="attachmentname" ColumnName="attachmentname" />
+          <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+          <ScalarProperty Name="attachmentfile" ColumnName="attachmentfile" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmailLogs">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblEmailLog">
+        <MappingFragment StoreEntitySet="tblEmailLogs">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="JR_Code" ColumnName="JR_Code" />
+          <ScalarProperty Name="SentTo" ColumnName="SentTo" />
+          <ScalarProperty Name="EmailFrom" ColumnName="EmailFrom" />
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="EmailUrl" ColumnName="EmailUrl" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIncharges">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblIncharge">
+        <MappingFragment StoreEntitySet="tblIncharge">
+          <ScalarProperty Name="Incharge" ColumnName="Incharge" />
+          <ScalarProperty Name="Incharge_ID" ColumnName="Incharge_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInchargePersons">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblInchargePerson">
+        <MappingFragment StoreEntitySet="tblInchargePerson">
+          <ScalarProperty Name="IsNoter" ColumnName="IsNoter" />
+          <ScalarProperty Name="IsAssesstor" ColumnName="IsAssesstor" />
+          <ScalarProperty Name="Incharge_ID" ColumnName="Incharge_ID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblJigTypes">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblJigType">
+        <MappingFragment StoreEntitySet="tblJigType">
+          <ScalarProperty Name="JigType" ColumnName="JigType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLeaderSubordinates">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblLeaderSubordinate">
+        <MappingFragment StoreEntitySet="tblLeaderSubordinates">
+          <ScalarProperty Name="LeaderEmpID" ColumnName="LeaderEmpID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRequestTypes">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblRequestType">
+        <MappingFragment StoreEntitySet="tblRequestType">
+          <ScalarProperty Name="Request_Type" ColumnName="Request_Type" />
+          <ScalarProperty Name="RequestTypeCode" ColumnName="RequestTypeCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRequestType_Selected">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblRequestType_Selected">
+        <MappingFragment StoreEntitySet="tblRequestType_Selected">
+          <ScalarProperty Name="JR_Code" ColumnName="JR_Code" />
+          <ScalarProperty Name="RequestTypeCode" ColumnName="RequestTypeCode" />
+          <ScalarProperty Name="reqrtype_selid" ColumnName="reqrtype_selid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSignatories">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblSignatory">
+        <MappingFragment StoreEntitySet="tblSignatories">
+          <ScalarProperty Name="JR_Code" ColumnName="JR_Code" />
+          <ScalarProperty Name="DateAccepted" ColumnName="DateAccepted" />
+          <ScalarProperty Name="AcceptRemarks" ColumnName="AcceptRemarks" />
+          <ScalarProperty Name="FinalAcceptanceBy" ColumnName="FinalAcceptanceBy" />
+          <ScalarProperty Name="DateApproved" ColumnName="DateApproved" />
+          <ScalarProperty Name="ManagerRemarks" ColumnName="ManagerRemarks" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="DateNoted" ColumnName="DateNoted" />
+          <ScalarProperty Name="NoterRemarks" ColumnName="NoterRemarks" />
+          <ScalarProperty Name="Noter" ColumnName="Noter" />
+          <ScalarProperty Name="DateAssessed" ColumnName="DateAssessed" />
+          <ScalarProperty Name="AssessedRemarks" ColumnName="AssessedRemarks" />
+          <ScalarProperty Name="AssessedBy" ColumnName="AssessedBy" />
+          <ScalarProperty Name="DateChecked" ColumnName="DateChecked" />
+          <ScalarProperty Name="CheckerRemarks" ColumnName="CheckerRemarks" />
+          <ScalarProperty Name="Checker" ColumnName="Checker" />
+          <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
+          <ScalarProperty Name="Req_Remarks" ColumnName="Req_Remarks" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="signid" ColumnName="signid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUniqueCodes">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblUniqueCode">
+        <MappingFragment StoreEntitySet="tblUniqueCodes">
+          <ScalarProperty Name="creationdatetime" ColumnName="creationdatetime" />
+          <ScalarProperty Name="isused" ColumnName="isused" />
+          <ScalarProperty Name="jr_code" ColumnName="jr_code" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="EmailAdd" ColumnName="EmailAdd" />
+          <ScalarProperty Name="EmailAddsss" ColumnName="EmailAddsss" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRequests">
+      <EntityTypeMapping TypeName="JobRequestDBModel.tblRequest">
+        <MappingFragment StoreEntitySet="tblRequest">
+          <ScalarProperty Name="RequestorsRemarks" ColumnName="RequestorsRemarks" />
+          <ScalarProperty Name="SampleCounter" ColumnName="SampleCounter" />
+          <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
+          <ScalarProperty Name="ThirdSendDate" ColumnName="ThirdSendDate" />
+          <ScalarProperty Name="IsSentToApprover_Third" ColumnName="IsSentToApprover_Third" />
+          <ScalarProperty Name="SecondSendDate" ColumnName="SecondSendDate" />
+          <ScalarProperty Name="IsSentToApprover_Second" ColumnName="IsSentToApprover_Second" />
+          <ScalarProperty Name="IsSentToApprover_First" ColumnName="IsSentToApprover_First" />
+          <ScalarProperty Name="CompletionRemarks" ColumnName="CompletionRemarks" />
+          <ScalarProperty Name="HoldRemarks" ColumnName="HoldRemarks" />
+          <ScalarProperty Name="HoldBy" ColumnName="HoldBy" />
+          <ScalarProperty Name="IsHold" ColumnName="IsHold" />
+          <ScalarProperty Name="RejectRemarks" ColumnName="RejectRemarks" />
+          <ScalarProperty Name="IsRejected" ColumnName="IsRejected" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="Repairedby" ColumnName="Repairedby" />
+          <ScalarProperty Name="Completion_Date" ColumnName="Completion_Date" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="DateAccepted" ColumnName="DateAccepted" />
+          <ScalarProperty Name="AcceptRemarks" ColumnName="AcceptRemarks" />
+          <ScalarProperty Name="FinalAcceptanceBy" ColumnName="FinalAcceptanceBy" />
+          <ScalarProperty Name="Is_AttachmentApproved" ColumnName="Is_AttachmentApproved" />
+          <ScalarProperty Name="AttachementStatus" ColumnName="AttachementStatus" />
+          <ScalarProperty Name="Is_JobAccepted" ColumnName="Is_JobAccepted" />
+          <ScalarProperty Name="Is_Approved" ColumnName="Is_Approved" />
+          <ScalarProperty Name="DateApproved" ColumnName="DateApproved" />
+          <ScalarProperty Name="ManagerRemarks" ColumnName="ManagerRemarks" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="Is_Noted" ColumnName="Is_Noted" />
+          <ScalarProperty Name="DateNoted" ColumnName="DateNoted" />
+          <ScalarProperty Name="NoterRemarks" ColumnName="NoterRemarks" />
+          <ScalarProperty Name="Noter" ColumnName="Noter" />
+          <ScalarProperty Name="Is_Assessed" ColumnName="Is_Assessed" />
+          <ScalarProperty Name="DateAssessed" ColumnName="DateAssessed" />
+          <ScalarProperty Name="AssessedRemarks" ColumnName="AssessedRemarks" />
+          <ScalarProperty Name="AssessedBy" ColumnName="AssessedBy" />
+          <ScalarProperty Name="Is_Reviewed" ColumnName="Is_Reviewed" />
+          <ScalarProperty Name="Is_Checked" ColumnName="Is_Checked" />
+          <ScalarProperty Name="DateChecked" ColumnName="DateChecked" />
+          <ScalarProperty Name="CheckerRemarks" ColumnName="CheckerRemarks" />
+          <ScalarProperty Name="Checker" ColumnName="Checker" />
+          <ScalarProperty Name="Is_Submitted" ColumnName="Is_Submitted" />
+          <ScalarProperty Name="Req_Remarks" ColumnName="Req_Remarks" />
+          <ScalarProperty Name="JR_Code" ColumnName="JR_Code" />
+          <ScalarProperty Name="IsExistingJig" ColumnName="IsExistingJig" />
+          <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+          <ScalarProperty Name="AssessmentRemarks" ColumnName="AssessmentRemarks" />
+          <ScalarProperty Name="Problem_Desc" ColumnName="Problem_Desc" />
+          <ScalarProperty Name="NextForeCast" ColumnName="NextForeCast" />
+          <ScalarProperty Name="Machine_Capacity" ColumnName="Machine_Capacity" />
+          <ScalarProperty Name="Monthly_Req" ColumnName="Monthly_Req" />
+          <ScalarProperty Name="QtyProdPerHr" ColumnName="QtyProdPerHr" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="JigType" ColumnName="JigType" />
+          <ScalarProperty Name="Partcode" ColumnName="Partcode" />
+          <ScalarProperty Name="Partname" ColumnName="Partname" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Incharge_ID" ColumnName="Incharge_ID" />
+          <ScalarProperty Name="Request_Date" ColumnName="Request_Date" />
+          <ScalarProperty Name="SectCode" ColumnName="SectCode" />
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+          <ScalarProperty Name="JRF_Date" ColumnName="JRF_Date" />
+          <ScalarProperty Name="JRF_No" ColumnName="JRF_No" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="ReqID" ColumnName="ReqID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
